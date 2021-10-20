@@ -2,6 +2,7 @@ import Head from "next/head";
 import Feed from "../components/Feed";
 import TweetModal from "../components/TweetModal";
 import clientPromise from "../lib/clientPromise";
+import Header from "../components/Header";
 
 export default function Home({ isConnected }) {
   return (
@@ -9,6 +10,7 @@ export default function Home({ isConnected }) {
       <p className="">Mongo DB {isConnected}</p>
       <Feed />
       <TweetModal />
+      {/* <Header /> */}
     </div>
   );
 }
