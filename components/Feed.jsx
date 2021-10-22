@@ -14,22 +14,23 @@ export default function Feed() {
 
   return (
     <ul>
-      {data.result.map((tweet) => (
-        <li key={tweet._id}>
-          {/* <Link href="/tweet/[id]" as={`/tweet/${tweet._id}`}>
+      {data &&
+        data.result.map((tweet) => (
+          <li key={tweet._id}>
+            {/* <Link href="/tweet/[id]" as={`/tweet/${tweet._id}`}>
             <a>{`Tweet ${tweet.text}`}</a>
           </Link> */}
-          <Tweet
-            // key={tweet._id}
-            // fullName={tweet.author.fullName}
-            // publicId={tweet.author ? tweet.author.publicId : ""}
-            // imageUrl={tweet.imageUrl}
-            text={tweet.text}
-            // username={tweet.author ? tweet.author : ""}
-            // createdAt={tweet.createdAt}
-          />
-        </li>
-      ))}
+            <Tweet
+              // key={tweet._id}
+              // fullName={tweet.author.fullName}
+              // publicId={tweet.author ? tweet.author.publicId : ""}
+              // imageUrl={tweet.imageUrl}
+              text={tweet.text}
+              // username={tweet.author ? tweet.author : ""}
+              // createdAt={tweet.createdAt}
+            />
+          </li>
+        ))}
     </ul>
   );
 }

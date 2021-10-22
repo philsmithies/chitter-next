@@ -27,7 +27,7 @@ const UserSchema = new Schema(
     bio: {
       type: String,
     },
-    publicId: String,
+    image: String,
     bioPhotoId: String,
   },
   { timestamps: true }

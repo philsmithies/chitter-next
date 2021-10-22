@@ -9,22 +9,22 @@ const SignUp = () => {
   const passwordRef = useRef(null);
   const usernameRef = useRef(null);
   const fullNameRef = useRef(null);
-  const [image, setImage] = useState("");
-  const [publicId, setPublicId] = useState("no image");
+  const [file, setFile] = useState("");
+  const [image, setImage] = useState("no image");
 
   const onChange = (e) => {
-    setImage(e.target.files[0]);
+    setFile(e.target.files[0]);
   };
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
 
-    if (image) {
+    if (file) {
       const formData = new FormData();
       formData.append("file", image);
       formData.append("upload_preset", preset);
       const imageRes = await Axios.post(url, formData);
-      setPublicId(imageRes.data.secure_url);
+      setImage(imageRes.data.secure_url);
     }
 
     const email = emailRef.current.value;
@@ -44,7 +44,7 @@ const SignUp = () => {
         password,
         username,
         name,
-        publicId,
+        image,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,6 @@ const SignUp = () => {
     });
 
     const data = await res.json();
-    console.log(publicId);
     console.log(data);
   };
 

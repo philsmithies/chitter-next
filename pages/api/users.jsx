@@ -18,7 +18,7 @@ export default async (req, res) => {
       break;
     case "POST":
       try {
-        const { email, password, username, name, publicId } = req.body;
+        const { email, password, username, name, image } = req.body;
         if (!email || !email.includes("@") || !password) {
           res.status(422).json({ message: "Invalid Data" });
           return;
@@ -34,7 +34,7 @@ export default async (req, res) => {
           password: await hash(password, 12),
           username,
           name,
-          publicId,
+          image,
         });
         res.status(201).json({ success: true, result: user });
         client.close();
