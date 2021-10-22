@@ -9,6 +9,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 
 export default function Home({ isConnected }) {
   const [session, loading] = useSession();
+  console.log(session);
   return (
     <div className="bg-red-500 h-screen">
       <p className="">Mongo DB {isConnected}</p>
@@ -23,7 +24,8 @@ export default function Home({ isConnected }) {
       )}
       {session && (
         <>
-          Signed in as {session.user.email} <br />
+          Signed in as {session.user.name} <br />
+          <img width="100px" src={session.user.image} />
           <div>You can view the secret pages</div>
           <button className="border-2 border-black">
             <Link href="/secret">To the secret</Link>

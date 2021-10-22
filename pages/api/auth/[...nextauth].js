@@ -1,5 +1,8 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { MongoClient } from "mongodb";
+import { compare } from "bcryptjs";
 
 const options = {
   providers: [
@@ -11,37 +14,53 @@ const options = {
       clientId: process.env.TWITTER_ID,
       clientSecret: process.env.TWITTER_SECRET,
     }),
-    Providers.Credentials({
+    CredentialsProvider({
+      // The name to display on the sign in form (e.g. 'Sign in with...')
+      name: "Credentials",
+      // The credentials is used to generate a suitable form on the sign in page.
+      // You can specify whatever fields you are expecting to be submitted.
+      // e.g. domain, username, password, 2FA token, etc.
+      // You can pass any HTML attribute to the <input> tag through the object.
+      credentials: {
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" },
+      },
       async authorize(credentials) {
         //Connect to DB
-        const client = await MongoClient.connect(
-          `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_CLUSTER}.n4tnm.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`,
-          { useNewUrlParser: true, useUnifiedTopology: true }
-        );
+        const client = await MongoClient.connect(`${process.env.MONGODB_URI}`, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        });
         //Get all the users
         const users = await client.db().collection("users");
         //Find user with the email
-        const result = await users.findOne({
-          email: credentials.email,
+        let user = await users.findOne({
+          username: credentials.username,
         });
+
         //Not found - send error res
-        if (!result) {
+        if (!user) {
           client.close();
           throw new Error("No user found with the email");
         }
-        //Check hased password with DB password
+        //Check hashed password with DB password
         const checkPassword = await compare(
-          credentials.passowrd,
-          result.passowrd
+          credentials.password,
+          user.password
         );
         //Incorrect password - send response
         if (!checkPassword) {
           client.close();
-          throw new Error("Password doesnt match");
+          throw new Error("Password doesn't match");
         }
+
         //Else send success response
         client.close();
-        return { email: result.email };
+        if (user) {
+          return user;
+        } else {
+          return null;
+        }
       },
     }),
     // Providers.Email({

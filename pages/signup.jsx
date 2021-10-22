@@ -18,11 +18,14 @@ const SignUp = () => {
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", image);
-    formData.append("upload_preset", preset);
-    const imageRes = await Axios.post(url, formData);
-    setPublicId(imageRes.data.secure_url);
+
+    if (image) {
+      const formData = new FormData();
+      formData.append("file", image);
+      formData.append("upload_preset", preset);
+      const imageRes = await Axios.post(url, formData);
+      setPublicId(imageRes.data.secure_url);
+    }
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
@@ -55,7 +58,6 @@ const SignUp = () => {
 
   return (
     <div className="bg-red-400 h-screen">
-      {/* <h1>{isLogin ? "Login" : "Sign Up"}</h1> */}
       <form onSubmit={onFormSubmit}>
         <input ref={emailRef} placeholder="email" />
         <br />

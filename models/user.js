@@ -5,12 +5,12 @@ const UserSchema = new Schema(
   {
     username: {
       type: String,
-      required: [false, "Please enter a username"],
+      required: [true, "Please enter a username"],
       lowercase: true,
     },
     fullName: {
       type: String,
-      required: [false, "Please enter your Name"],
+      required: [true, "Please enter your Name"],
       lowercase: true,
     },
     email: {
