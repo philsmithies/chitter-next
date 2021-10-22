@@ -79,6 +79,19 @@ const options = {
     //   from: process.env.EMAIL_FROM,
     // }),
   ],
+  callbacks: {
+    async signIn(user) {
+      return user.userId && user.isActive === "1";
+    },
+    async session(session, token) {
+      session.user = token.user;
+      return session;
+    },
+    async jwt(token, user) {
+      if (user) token.user = user;
+      return token;
+    },
+  },
 };
 
 export default (req, res) => NextAuth(req, res, options);
