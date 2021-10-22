@@ -11,8 +11,8 @@ const SignUp = () => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    const username = username.current.value;
-    const fullName = fullName.current.value;
+    const username = usernameRef.current.value;
+    const fullName = fullNameRef.current.value;
 
     if (!email || !email.includes("@") || !password) {
       alert("Invalid details");
@@ -21,7 +21,7 @@ const SignUp = () => {
 
     const res = await fetch("/api/users", {
       method: "POST",
-      body: JSON.stringify({ email, password, username }),
+      body: JSON.stringify({ email, password, username, fullName }),
       headers: {
         "Content-Type": "application/json",
       },
