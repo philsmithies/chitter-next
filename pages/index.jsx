@@ -25,6 +25,10 @@ export default function Home({ isConnected }) {
         <>
           Signed in as {session.user.email} <br />
           <div>You can view the secret pages</div>
+          <button className="border-2 border-black">
+            <Link href="/secret">To the secret</Link>
+          </button>
+          <br />
           <button onClick={signOut}>Sign out</button>
         </>
       )}
