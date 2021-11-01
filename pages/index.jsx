@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Feed from "../components/Feed";
+import SideBar from "../components/Sidebar";
 import TweetModal from "../components/TweetModal";
 import clientPromise from "../lib/clientPromise";
 import Header from "../components/Header";
@@ -13,7 +14,11 @@ export default function Home({ isConnected }) {
   return (
     <div className="bg-red-500 h-screen">
       <p className="">Mongo DB {isConnected}</p>
-      <Feed />
+      <div className="flex">
+        {session && <SideBar user={session.user} />}
+        <Feed />
+      </div>
+
       {!session && (
         <>
           Not signed in
@@ -23,7 +28,6 @@ export default function Home({ isConnected }) {
       )}
       {session && (
         <>
-          <TweetModal user={session.user} />
           Signed in as {session.user.name} <br />
           <img width="100px" src={session.user.image} />
           <div>You can view the secret pages</div>

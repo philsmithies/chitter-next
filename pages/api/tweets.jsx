@@ -15,9 +15,8 @@ export default async (req, res) => {
         //     .sort({ createdAt: "desc" });
         //   res.json(getAllTweets);
         // },
-        const tweets = await Tweet.find()
-          .sort({ createdAt: "desc" })
-          .populate("user");
+        const tweets = await Tweet.find().sort({ createdAt: "desc" });
+        // .populate("user");
         res.status(200).json({ success: true, result: tweets });
       } catch (error) {
         res.status(400).json({ success: false });
