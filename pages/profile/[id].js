@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { server } from "../../util/server";
 
 const Profile = ({ user }) => {
   return (
@@ -9,9 +10,7 @@ const Profile = ({ user }) => {
 };
 
 export const getStaticProps = async (context) => {
-  const res = await fetch(
-    `http://localhost:3000/api/user/${context.params.id}`
-  );
+  const res = await fetch(`${server}/api/user/${context.params.id}`);
 
   const user = await res.json();
   console.log(user);
@@ -23,7 +22,7 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:3000/api/users/");
+  const res = await fetch(`${server}/api/users/`);
 
   const users = await res.json();
   const ids = users.result.map((user) => user._id);
