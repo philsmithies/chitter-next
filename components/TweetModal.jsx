@@ -2,16 +2,22 @@ import react from "react";
 import { useState } from "react";
 import useSwr from "swr";
 
-const TweetModal = () => {
+const TweetModal = ({ author }) => {
   const [tweet, setTweet] = useState("");
 
   const postTweet = async (event) => {
     event.preventDefault();
 
     const res = await fetch("/api/tweets", {
-      body: JSON.stringify({
-        text: tweet,
-      }),
+      body: JSON.stringify(
+        {
+          text: tweet,
+          author: author,
+        },
+        {
+          withCredentials: true,
+        }
+      ),
       headers: {
         "Content-Type": "application/json",
       },

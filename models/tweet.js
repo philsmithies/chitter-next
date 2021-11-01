@@ -8,7 +8,8 @@ const TweetSchema = new Schema(
       required: true,
     },
     author: {
-      type: Schema.Types.ObjectId,
+      type: String,
+      // type: Schema.Types.ObjectId,
       ref: "User",
     },
     imageUrl: {
