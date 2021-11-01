@@ -5,7 +5,7 @@ import Link from "next/link";
 const Sidebar = (user) => {
   return (
     <>
-      <div className="flex bg-yellow-200 flex-col pl-5 pr-5">
+      <div className="flex bg-white flex-col pl-5 pr-5">
         <div className="pt-5">
           <a href="/">
             <img
