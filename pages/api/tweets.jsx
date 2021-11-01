@@ -1,5 +1,6 @@
 import dbConnect from "../../lib/dbConnect";
 import Tweet from "../../models/tweet";
+require("../../models/user");
 
 dbConnect();
 
@@ -14,6 +15,7 @@ export default async (req, res) => {
           .populate("user");
         res.status(200).json({ success: true, result: tweets });
       } catch (error) {
+        console.log(error);
         res.status(400).json({ success: false });
       }
       break;
