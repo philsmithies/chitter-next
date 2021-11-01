@@ -34,7 +34,7 @@ export default function Tweet(props) {
           </div>
           <p className="ml-2 pb-5">{props.text}</p>
           <div className="flex justify-between p-2">
-            <ChatBubbleOutlineIcon />
+            <ChatBubbleOutlineIcon className="h-3" />
             <RepeatIcon />
             <FavoriteBorderIcon
               className="heart"

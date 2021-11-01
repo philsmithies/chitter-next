@@ -13,29 +13,17 @@ export default function Home({ isConnected }) {
 
   return (
     <div className="bg-red-500 h-screen">
-      <p className="">Mongo DB {isConnected}</p>
       <div className="flex">
         {session && <SideBar user={session.user} />}
         <Feed />
       </div>
-
-      {!session && (
-        <>
-          Not signed in
-          <br />
-          <button onClick={signIn}>Sign In</button>
-        </>
-      )}
       {session && (
         <>
-          Signed in as {session.user.name} <br />
-          <img width="100px" src={session.user.image} />
           <div>You can view the secret pages</div>
           <button className="border-2 border-black">
             <Link href="/secret">To the secret</Link>
           </button>
           <br />
-          <button onClick={signOut}>Sign out</button>
         </>
       )}
     </div>
