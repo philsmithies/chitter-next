@@ -10,7 +10,7 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        const users = await User.find({});
+        const users = await User.find();
         res.status(200).json({ success: true, result: users });
       } catch (error) {
         res.status(400).json({ success: false });

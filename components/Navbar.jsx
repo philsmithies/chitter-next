@@ -35,7 +35,7 @@ const Navbar = () => {
               className="rounded-full h-12 w-12 mr-3 hover:cursor-pointer"
             />
             {/* <p className="text-white pl-3">{session.user.name}</p> */}
-            <Link href={`/profile/${session.user.username}`} passHref>
+            <Link href={`/profile/${session.user._id}`} passHref>
               <button className="bg-black hover:bg-gray-600 transition duration-300 text-white font-semibold py-2 px-4 hover:border-gray-400 rounded shadow">
                 Profile
               </button>
