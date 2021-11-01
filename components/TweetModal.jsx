@@ -32,13 +32,16 @@ const TweetModal = ({ user }) => {
 
   return (
     <div>
-      <input
+      {/* <input
         placeholder="tweet here"
         onChange={(e) => {
           setTweet(e.target.value);
         }}
-      />
-      <button className="border-2" onClick={postTweet}>
+      /> */}
+      <button
+        className="border-2 flex justify-center pt-3 pb-3 rounded-full bg-yellow-400 w-36 font-medium"
+        onClick={postTweet}
+      >
         Tweet
       </button>
     </div>
