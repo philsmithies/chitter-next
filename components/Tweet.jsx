@@ -13,8 +13,8 @@ export default function Tweet(props) {
   };
 
   return (
-    <div className=" bg-white flex w-screen justify-between flex-col border-gray-400 border-b-2">
-      <div className="flex">
+    <div className="bg-white flex justify-between flex-col border-gray-400 border-b-2 w-screen">
+      <div className="flex pt-2 pl-2">
         <div>
           {props.publicId ? (
             <Image cloudName="chitter" publicId={props.publicId} />
@@ -26,70 +26,26 @@ export default function Tweet(props) {
             ></img>
           )}
         </div>
-        <div className="flex flex-col">
-          <div className="flex">
+        <div className="flex flex-col w-full">
+          <div className="flex ml-2 pb-1">
             <p>{props.username || "Full Name"}</p>
-            <p className="font-bold">@{props.fullName || "Jimmy"}</p>
+            <p className="font-bold ml-1">@{props.fullName || "Jimmy"}</p>
             <p>{props.createdAt}</p>
           </div>
-          <p>{props.text}</p>
+          <p className="ml-2 pb-5">{props.text}</p>
+          <div className="flex justify-between p-2">
+            <ChatBubbleOutlineIcon />
+            <RepeatIcon />
+            <FavoriteBorderIcon
+              className="heart"
+              // onClick={() => {
+              //   likeTweet();
+              // }}
+            />
+            <LinkIcon className="link" />
+          </div>
         </div>
-      </div>
-      <div className="flex justify-between p-2">
-        <ChatBubbleOutlineIcon />
-        <RepeatIcon />
-        <FavoriteBorderIcon
-          className="heart"
-          // onClick={() => {
-          //   likeTweet();
-          // }}
-        />
-        <LinkIcon className="link" />
       </div>
     </div>
   );
 }
-
-//   <div className="tweet_content">
-//     <div className="username">
-//       <Link to={`/profile/${props.username}` || '/'} className="profileLinks">
-//         <strong>{props.fullName}</strong>
-//       </Link>
-//       <small className="usernameText">
-//         @{props.username ? props.username : ""}
-//       </small>
-//       <small className="dateText">{formatDate(props.createdAt)}</small>
-
-//       {/* <div className="threeDots">
-//         <MoreHorizIcon/>
-//       </div> */}
-//     </div>
-
-//     <div className="bodyText">{props.text}</div>
-//     <div>
-//       {props.imageUrl !== "" ? (
-//         <a href ={props.imageUrl || '/'}>
-//           <Image
-//             className="tweet_photo"
-//             cloudName="chitter"
-//             publicId={props.imageUrl}
-//           />
-//         </a>
-//       ) : (
-//         ""
-//       )}
-//     </div>
-//     <div className="tweet_functions">
-//       <ChatBubbleOutlineIcon className="chatBubble" />
-//       <RepeatIcon className="retweet" />
-//       <FavoriteBorderIcon
-//         className="heart"
-//         // onClick={() => {
-//         //   likeTweet();
-//         // }}
-//       />
-//       <LinkIcon className="link" />
-//     </div>
-//   </div>
-// </div>
-// </div>

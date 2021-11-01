@@ -13,7 +13,7 @@ export default function Feed() {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <div className="flex justify-center border-2">
+    <div className="flex justify-center border-2 flex-grow bg-yellow-200">
       <ul>
         {data.result &&
           data.result.map((tweet) => (
