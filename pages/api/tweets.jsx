@@ -9,7 +9,15 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        const tweets = await Tweet.find({});
+        // all: async (req, res) => {
+        //   let getAllTweets = await TweetModel.find()
+        //     .populate("author")
+        //     .sort({ createdAt: "desc" });
+        //   res.json(getAllTweets);
+        // },
+        const tweets = await Tweet.find()
+          .sort({ createdAt: "desc" })
+          .populate("user");
         res.status(200).json({ success: true, result: tweets });
       } catch (error) {
         res.status(400).json({ success: false });

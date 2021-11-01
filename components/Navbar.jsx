@@ -12,12 +12,12 @@ const Navbar = () => {
       </div>
       <div className="p-4 justify-self-end align-middle">
         <Link href="/tweets" passHref>
-          <button className="bg-black hover:bg-gray-600 transition duration-300  text-white font-semibold py-2 px-4 hover:border-gray-400 rounded shadow">
+          <button className="bg-black hover:bg-gray-600 transition duration-300 text-white font-semibold py-2 px-4 hover:border-gray-400 rounded shadow">
             Tweets
           </button>
         </Link>
         <Link href="/signup" passHref>
-          <button className="bg-black hover:bg-gray-600 transition duration-300  text-white font-semibold py-2 px-4 hover:border-gray-400 rounded shadow">
+          <button className="bg-black hover:bg-gray-600 transition duration-300 text-white font-semibold py-2 px-4 hover:border-gray-400 rounded shadow">
             Sign Up
           </button>
         </Link>

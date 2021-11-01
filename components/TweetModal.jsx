@@ -2,7 +2,7 @@ import react from "react";
 import { useState } from "react";
 import useSwr from "swr";
 
-const TweetModal = ({ author }) => {
+const TweetModal = ({ user }) => {
   const [tweet, setTweet] = useState("");
 
   const postTweet = async (event) => {
@@ -12,7 +12,7 @@ const TweetModal = ({ author }) => {
       body: JSON.stringify(
         {
           text: tweet,
-          author: author,
+          user: user,
         },
         {
           withCredentials: true,

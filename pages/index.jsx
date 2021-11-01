@@ -23,7 +23,7 @@ export default function Home({ isConnected }) {
       )}
       {session && (
         <>
-          <TweetModal />
+          <TweetModal user={session.user} />
           Signed in as {session.user.name} <br />
           <img width="100px" src={session.user.image} />
           <div>You can view the secret pages</div>

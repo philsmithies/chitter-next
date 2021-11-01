@@ -12,9 +12,9 @@ export default function Tweet(props) {
   };
 
   return (
-    <div>
-      <p>{props.username}</p>
-      <p>{props.fullName}</p>
+    <div className="bg-white flex p-10 flex-col">
+      <p>{props.username || "Jim Full Name"}</p>
+      <p>{props.fullName || "Jimmy"}</p>
       {/* <p>{props.createdAt}</p> */}
       <p>{props.text}</p>
     </div>
