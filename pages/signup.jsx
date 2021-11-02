@@ -55,18 +55,43 @@ const SignUp = () => {
   };
 
   return (
-    <div className="bg-red-400 h-screen">
-      <form onSubmit={onFormSubmit}>
-        <input ref={emailRef} placeholder="email" />
+    <div className="bg-gray-800 h-screen flex items-center justify-center">
+      <form
+        className="bg-white w-3/12 flex flex-col mb-56 p-3 rounded"
+        onSubmit={onFormSubmit}
+      >
+        <input
+          className="border-2 rounded-md p-1"
+          ref={emailRef}
+          placeholder="email"
+        />
         <br />
-        <input ref={usernameRef} placeholder="username" />
+        <input
+          className="border-2 rounded-md p-1"
+          ref={usernameRef}
+          placeholder="username"
+        />
         <br />
-        <input ref={fullNameRef} placeholder="full name" />
+        <input
+          className="border-2 rounded-md p-1"
+          ref={fullNameRef}
+          placeholder="full name"
+        />
         <br />
-        <input ref={passwordRef} placeholder="password" />
+        <input
+          className="border-2 rounded-md p-1"
+          ref={passwordRef}
+          placeholder="password"
+        />
         <br />
-        <input accept="image/*" multiple type="file" onChange={onChange} />
-        <button className="border-2">Submit</button>
+        <input
+          className="border-2 p-1 mb-2"
+          accept="image/*"
+          multiple
+          type="file"
+          onChange={onChange}
+        />
+        <button className="border-2 mt-3 bg-yellow-400 p-2">Submit</button>
       </form>
     </div>
   );
