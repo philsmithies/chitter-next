@@ -13,11 +13,11 @@ export default function Home({ isConnected }) {
 
   return (
     <div className="bg-black h-screen">
-      <div className="flex">
+      <div className="flex h-full bg-yellow-400">
         {session && <SideBar user={session.user} />}
         <Feed />
       </div>
-      {session && (
+      {/* {session && (
         <>
           <div className="text-white">You can view the secret pages</div>
           <button className="border-2 border-black">
@@ -27,7 +27,7 @@ export default function Home({ isConnected }) {
           </button>
           <br />
         </>
-      )}
+      )} */}
     </div>
   );
 }

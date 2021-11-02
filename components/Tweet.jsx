@@ -13,7 +13,7 @@ export default function Tweet(props) {
   };
 
   return (
-    <div className="bg-white flex justify-between flex-col border-gray-400 border-b-2 w-screen">
+    <div className="bg-white border-gray-400 border-b-2 w-full">
       <div className="flex pt-2 pl-2">
         <div>
           {props.publicId ? (
@@ -37,12 +37,11 @@ export default function Tweet(props) {
             <ChatBubbleOutlineIcon className="h-3" />
             <RepeatIcon />
             <FavoriteBorderIcon
-              className="heart"
-              // onClick={() => {
-              //   likeTweet();
-              // }}
+            // onClick={() => {
+            //   likeTweet();
+            // }}
             />
-            <LinkIcon className="link" />
+            <LinkIcon />
           </div>
         </div>
       </div>
