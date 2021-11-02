@@ -20,6 +20,7 @@ const SignUp = () => {
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", preset);
@@ -36,7 +37,6 @@ const SignUp = () => {
       return;
     }
     try {
-      setLoading(true);
       await Axios.post(
         "/api/users",
         {
@@ -45,6 +45,11 @@ const SignUp = () => {
           username,
           fullName,
           image,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
         {
           withCredentials: true,
@@ -59,21 +64,6 @@ const SignUp = () => {
     } catch (err) {
       console.error(err);
     }
-    // const res = await fetch("/api/users", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email,
-    //     password,
-    //     username,
-    //     fullName,
-    //     image,
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-
-    // const data = await response.json();
   };
 
   return (
@@ -84,53 +74,48 @@ const SignUp = () => {
     >
       {loading && (
         <div className="mt-36">
-          <PuffLoader
-            color={"#36D7B7"}
-            // loading={loading}
-            // css={override}
-            size={100}
-          />
+          <PuffLoader color={"#36D7B7"} size={100} />
         </div>
       )}
-      {!loading && (
-        <form
-          className="bg-white w-3/12 flex flex-col mb-56 p-3 rounded"
-          onSubmit={onFormSubmit}
-        >
-          <input
-            className="border-2 rounded-md p-1"
-            ref={emailRef}
-            placeholder="email"
-          />
-          <br />
-          <input
-            className="border-2 rounded-md p-1"
-            ref={usernameRef}
-            placeholder="username"
-          />
-          <br />
-          <input
-            className="border-2 rounded-md p-1"
-            ref={fullNameRef}
-            placeholder="full name"
-          />
-          <br />
-          <input
-            className="border-2 rounded-md p-1"
-            ref={passwordRef}
-            placeholder="password"
-          />
-          <br />
-          <input
-            className="border-2 p-1 mb-2"
-            accept="image/*"
-            multiple
-            type="file"
-            onChange={onChange}
-          />
-          <button className="border-2 mt-3 bg-yellow-400 p-2">Submit</button>
-        </form>
-      )}
+      <form
+        className={`bg-white w-3/12 flex flex-col mb-56 p-3 rounded ${
+          loading ? "hidden" : ""
+        }`}
+        onSubmit={onFormSubmit}
+      >
+        <input
+          className="border-2 rounded-md p-1"
+          ref={emailRef}
+          placeholder="email"
+        />
+        <br />
+        <input
+          className="border-2 rounded-md p-1"
+          ref={usernameRef}
+          placeholder="username"
+        />
+        <br />
+        <input
+          className="border-2 rounded-md p-1"
+          ref={fullNameRef}
+          placeholder="full name"
+        />
+        <br />
+        <input
+          className="border-2 rounded-md p-1"
+          ref={passwordRef}
+          placeholder="password"
+        />
+        <br />
+        <input
+          className="border-2 p-1 mb-2"
+          accept="image/*"
+          multiple
+          type="file"
+          onChange={onChange}
+        />
+        <button className="border-2 mt-3 bg-yellow-400 p-2">Submit</button>
+      </form>
     </div>
   );
 };

@@ -2,9 +2,10 @@ import { useRouter } from "next/router";
 import { server } from "../../util/server";
 
 const Profile = ({ user }) => {
+  console.log(user);
   return (
     <div className="h-screen">
-      <h2>Hello I am {user._id}</h2>
+      <h2>Hello I am {user.username}</h2>
     </div>
   );
 };
