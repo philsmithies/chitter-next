@@ -28,9 +28,11 @@ export default function Tweet(props) {
         </div>
         <div className="flex flex-col w-full">
           <div className="flex ml-2 pb-1">
-            <p>{props.username || "Full Name"}</p>
+            <p>{props.username || "Full Name is missing"}</p>
             <p className="font-bold ml-1">@{props.fullName || "Jimmy"}</p>
-            <p>{props.createdAt}</p>
+            <p className="font-bol ml-1 text-gray-600">
+              {formatDate(props.createdAt)}
+            </p>
           </div>
           <p className="ml-2 pb-5">{props.text}</p>
           <div className="flex justify-between p-2">

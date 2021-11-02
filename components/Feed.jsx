@@ -25,7 +25,7 @@ export default function Feed() {
                 // publicId={tweet.user ? tweet.user.publicId : ""}
                 // imageUrl={tweet.imageUrl}
                 text={tweet.text}
-                username={tweet.author ? tweet.author : ""}
+                username={tweet.user.username ? tweet.user.username : ""}
                 createdAt={tweet.createdAt}
               />
             </li>
