@@ -15,7 +15,7 @@ export default function Home({ isConnected }) {
   return (
     <div className="bg-black h-screen">
       <div className="flex h-full bg-white">
-        {session && <SideBar user={session.user} />}
+        <SideBar user={session ? session.user : ""} />
         <Feed />
         <SignUpBar />
       </div>

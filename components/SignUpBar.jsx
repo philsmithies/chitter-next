@@ -13,7 +13,16 @@ const SignUpBar = () => {
             </button>
           </div>
         </a>
-        {/* {data ? <TweetModal /> : <TweetModal link={"/signup"} />} */}
+        <p className="mt-3 text-gray-600">
+          This is a project by
+          <a
+            className="text-yellow-500 font-bold hover:text-teal300"
+            href="https://www.github.com/philsmithies"
+          >
+            {" "}
+            Phil Smithies
+          </a>
+        </p>
       </div>
     </>
   );
