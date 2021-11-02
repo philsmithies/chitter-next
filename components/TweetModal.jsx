@@ -47,7 +47,7 @@ const TweetModal = ({ user }) => {
         />
       )}
       <button
-        className="border-2 flex justify-center pt-3 pb-3 rounded-full bg-yellow-400 w-36 font-medium"
+        className="border-2 flex justify-center pt-3 pb-3 rounded-full bg-yellow-400 hover:bg-yellow-500 hover:text-white w-36 font-medium"
         onClick={postTweet}
       >
         Tweet

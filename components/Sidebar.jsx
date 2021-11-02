@@ -16,7 +16,7 @@ const Sidebar = (user) => {
           </a>
         </div>
         <a href="/">
-          <div className="flex pt-3 pb-3 rounded-full hover:bg-yellow-400">
+          <div className="flex pt-3 pb-3 rounded-full hover:text-yellow-400">
             <img src={"hashtag.png"} alt="hashtag" className="h-7 pl-3" />
             <h1 className="self-center pl-2">Explore</h1>
           </div>
