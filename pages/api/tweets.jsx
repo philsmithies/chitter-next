@@ -24,6 +24,7 @@ export default async (req, res) => {
         const tweet = await Tweet.create(req.body);
         res.status(201).json({ success: true, result: tweet });
       } catch (error) {
+        console.log(error);
         res.status(400).json({ success: false });
       }
       break;

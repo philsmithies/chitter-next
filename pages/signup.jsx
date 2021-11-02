@@ -30,7 +30,7 @@ const SignUp = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const username = usernameRef.current.value;
-    const name = fullNameRef.current.value;
+    const fullName = fullNameRef.current.value;
 
     if (!email || !email.includes("@") || !password) {
       alert("Invalid Email");
@@ -43,7 +43,7 @@ const SignUp = () => {
         email,
         password,
         username,
-        name,
+        fullName,
         image,
       }),
       headers: {

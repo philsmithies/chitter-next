@@ -8,7 +8,7 @@ const UserSchema = new Schema(
       required: [true, "Please enter a username"],
       lowercase: true,
     },
-    name: {
+    fullName: {
       type: String,
       required: [true, "Please enter your Name"],
       lowercase: true,

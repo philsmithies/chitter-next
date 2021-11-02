@@ -20,13 +20,13 @@ export default function Feed() {
             <a>{`Tweet ${tweet.text}`}</a>
           </Link> */}
               <Tweet
-                // key={tweet._id}
-                // fullName={tweet.author.fullName}
-                // publicId={tweet.author ? tweet.author.publicId : ""}
+                key={tweet._id}
+                fullName={tweet.user.fullName ? tweet.user.fullName : ""}
+                // publicId={tweet.user ? tweet.user.publicId : ""}
                 // imageUrl={tweet.imageUrl}
                 text={tweet.text}
                 username={tweet.author ? tweet.author : ""}
-                // createdAt={tweet.createdAt}
+                createdAt={tweet.createdAt}
               />
             </li>
           ))}
