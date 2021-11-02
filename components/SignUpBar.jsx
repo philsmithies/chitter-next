@@ -3,7 +3,7 @@ import React from "react";
 const SignUpBar = () => {
   return (
     <>
-      <div className="flex bg-white flex-col pt-5 pl-5 pr-5 w-2/12">
+      <div className="flex bg-white flex-col pt-5 pl-5 pr-5 w-3/12">
         <a href="/signup">
           <div className="flex flex-col p-4 rounded-lg border-2">
             <h1 className="font-extrabold">New To Chitter?</h1>

@@ -29,14 +29,16 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center">
-            <img
-              width="100px"
-              src={"./bluetit.jpg"}
-              className="rounded-full h-12 w-12 mr-3 hover:cursor-pointer"
-            />
+            <a href={`/profile/${session.user.username}`}>
+              <img
+                width="100px"
+                src={"./bluetit.jpg"}
+                className="rounded-full h-12 w-12 mr-3 hover:cursor-pointer"
+              />
+            </a>
             {/* <p className="text-white pl-3">{session.user.name}</p> */}
-            <Link href={`/profile/${session.user._id}`} passHref>
-              <button className="bg-black hover:bg-gray-600 transition duration-300 text-white font-semibold py-2 px-4 hover:border-gray-400 rounded shadow">
+            <Link href={`/profile/${session.user.username}`} passHref>
+              <button className="bg-yellow-400 hover:bg-gray-600 transition duration-300 text-white font-semibold py-2 px-4 hover:border-gray-400 rounded">
                 Profile
               </button>
             </Link>
@@ -46,7 +48,7 @@ const Navbar = () => {
                   callbackUrl: `${window.location.origin}`,
                 })
               }
-              className="bg-black hover:bg-gray-600 transition duration-300 text-white font-semibold py-2 px-4 hover:border-gray-400 rounded shadow"
+              className="bg-yellow-400 hover:bg-gray-600 transition duration-300 text-white font-semibold py-2 px-4 hover:border-gray-400 rounded"
             >
               Sign Out
             </button>

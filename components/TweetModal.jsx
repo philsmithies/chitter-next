@@ -40,6 +40,7 @@ const TweetModal = ({ user }) => {
     <div>
       {session && (
         <input
+          className="border-2 rounded-sm mb-1"
           placeholder="tweet here"
           onChange={(e) => {
             setTweet(e.target.value);

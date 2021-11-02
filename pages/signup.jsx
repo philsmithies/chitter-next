@@ -12,20 +12,17 @@ const SignUp = () => {
   const [file, setFile] = useState("");
   const [image, setImage] = useState("no image");
 
-  const onChange = (e) => {
+  const onChange = async (e) => {
     setFile(e.target.files[0]);
   };
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
-
-    if (file) {
-      const formData = new FormData();
-      formData.append("file", image);
-      formData.append("upload_preset", preset);
-      const imageRes = await Axios.post(url, formData);
-      setImage(imageRes.data.secure_url);
-    }
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", preset);
+    const imageRes = await Axios.post(url, formData);
+    setImage(imageRes.data.secure_url);
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
@@ -36,22 +33,40 @@ const SignUp = () => {
       alert("Invalid Email");
       return;
     }
+    try {
+      await Axios.post(
+        "/api/users",
+        {
+          email,
+          password,
+          username,
+          fullName,
+          image,
+        },
+        {
+          withCredentials: true,
+        }
+      ).then((response) => {
+        console.log(response);
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    // const res = await fetch("/api/users", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     email,
+    //     password,
+    //     username,
+    //     fullName,
+    //     image,
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
 
-    const res = await fetch("/api/users", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-        username,
-        fullName,
-        image,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await res.json();
+    // const data = await response.json();
   };
 
   return (
