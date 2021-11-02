@@ -11,7 +11,7 @@ export default function Feed() {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <div className="flex justify-center w-full bg-red-700 border-2">
+    <div className="flex justify-center w-7/12 border-2">
       <ul className="flex-1">
         {data.result &&
           data.result.map((tweet) => (

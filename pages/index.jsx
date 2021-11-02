@@ -7,15 +7,17 @@ import Header from "../components/Header";
 import React from "react";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/client";
+import SignUpBar from "../components/SignUpBar";
 
 export default function Home({ isConnected }) {
   const [session, loading] = useSession();
 
   return (
     <div className="bg-black h-screen">
-      <div className="flex h-full bg-yellow-400">
+      <div className="flex h-full bg-white">
         {session && <SideBar user={session.user} />}
         <Feed />
+        <SignUpBar />
       </div>
       {/* {session && (
         <>
