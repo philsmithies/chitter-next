@@ -104,20 +104,19 @@ export const getStaticProps = async (context) => {
   const username = context.params.username;
   const res = await fetch(`${server}/api/user/` + username);
   const data = await res.json();
-  console.log("the data is" + data);
   return {
-    props: { ninja: data },
+    props: { user: data.user, tweets: data.tweets },
   };
 };
 
-const Details = ({ ninja }) => {
-  console.log(ninja);
+const Details = ({ user, tweets }) => {
+  console.log(tweets);
   return (
     <div>
-      {/* <h1>{ninja.name}</h1> */}
-      <p>{ninja.username}</p>
-      {/* <p>{ninja.website}</p> */}
-      {/* <p>{ninja.address.city}</p> */}
+      <p>{user.username}</p>
+      <p>{user.fullName}</p>
+      <p>{user.email}</p>
+      <p>{tweets[0].text}</p>;
     </div>
   );
 };
