@@ -5,8 +5,9 @@ import PuffLoader from "react-spinners/PuffLoader";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function Feed() {
-  const { data, error } = useSwr("/api/tweets", fetcher);
+export default function ProfileFeed({ username }) {
+  console.log(username);
+  const { data, error } = useSwr(`/api/user/${username}`, fetcher);
 
   if (error) return <div>Failed to load Tweets</div>;
 

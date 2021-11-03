@@ -21,7 +21,7 @@ export default function Tweet(props) {
           ) : (
             <img
               className="w-14 rounded-full"
-              src={"bluetit.jpg"}
+              src={"/bluetit.jpg"}
               alt="new user"
             ></img>
           )}

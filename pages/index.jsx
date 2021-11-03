@@ -13,23 +13,8 @@ export default function Home({ isConnected }) {
   const [session, loading] = useSession();
 
   return (
-    <div className="bg-black h-screen">
-      <div className="flex h-full bg-white">
-        <SideBar user={session ? session.user : ""} />
-        <Feed />
-        <SignUpBar />
-      </div>
-      {/* {session && (
-        <>
-          <div className="text-white">You can view the secret pages</div>
-          <button className="border-2 border-black">
-            <Link href="/secret">
-              <p className="text-white hover:text-red-500">To the secret</p>
-            </Link>
-          </button>
-          <br />
-        </>
-      )} */}
+    <div>
+      <Feed />
     </div>
   );
 }

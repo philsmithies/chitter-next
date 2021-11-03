@@ -1,5 +1,8 @@
 // import { useRouter } from "next/router";
 import { server } from "../../util/server";
+import ProfileFeed from "../../components/ProfileFeed";
+import Feed from "../../components/Feed";
+import Tweet from "../../components/Tweet";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`${server}/api/users/`);
@@ -29,12 +32,21 @@ export const getStaticProps = async (context) => {
 const Profile = ({ user, tweets }) => {
   console.log(tweets);
   return (
-    <div>
+    <div className="border-2 h-screen">
       <p>{user.username}</p>
       <p>{user.fullName}</p>
       <p>{user.email}</p>
+      <p>{user.image}</p>
       {tweets.map((tweet) => (
-        <p>{tweet.text}</p>
+        <Tweet
+          key={tweet._id}
+          fullName={tweet.user ? tweet.user.fullName : ""}
+          // publicId={tweet.user ? tweet.user.publicId : ""}
+          // imageUrl={tweet.imageUrl}
+          text={tweet.text}
+          username={tweet.user ? tweet.user.username : ""}
+          createdAt={tweet.createdAt}
+        />
       ))}
     </div>
   );
