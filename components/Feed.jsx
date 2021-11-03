@@ -32,11 +32,11 @@ export default function Feed() {
           </Link> */}
                 <Tweet
                   key={tweet._id}
-                  fullName={tweet.user.fullName ? tweet.user.fullName : ""}
+                  fullName={tweet.user ? tweet.user.fullName : ""}
                   // publicId={tweet.user ? tweet.user.publicId : ""}
                   // imageUrl={tweet.imageUrl}
                   text={tweet.text}
-                  username={tweet.user.username ? tweet.user.username : ""}
+                  username={tweet.user ? tweet.user.username : ""}
                   createdAt={tweet.createdAt}
                 />
               </li>
