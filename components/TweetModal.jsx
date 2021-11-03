@@ -17,7 +17,7 @@ const TweetModal = ({ user }) => {
         body: JSON.stringify(
           {
             text: tweet,
-            user: user.user,
+            user: user,
           },
           {
             withCredentials: true,
