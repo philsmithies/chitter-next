@@ -1,5 +1,5 @@
 import { connectToDatabase } from "../util/mongodb";
-import SideArrow from "../public/assets/close.svg";
+import SideArrow from "../public/assets/composer-icon.svg";
 
 export default function Tweets({ tweets }) {
   return (
