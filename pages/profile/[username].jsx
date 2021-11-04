@@ -43,7 +43,9 @@ const Profile = ({ user, tweets }) => {
       <div className="w-full flex h-20 items-center border-b-2">
         <div className="ml-5">
           <Link href="/">
-            <ArrowBackIcon className="fill-current text-yellow-400" />
+            <button>
+              <ArrowBackIcon className="fill-current text-yellow-400" />
+            </button>
           </Link>
         </div>
         <div className="pl-8">

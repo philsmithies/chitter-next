@@ -1,7 +1,7 @@
-import RepeatIcon from "@material-ui/icons/Repeat";
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import LinkIcon from "@material-ui/icons/Link";
+import RetweetIcon from "../public/assets/retweet-icon.svg";
+import ChatBubbleOutlineIcon from "../public/assets/quote-outline.svg";
+import LikeIcon from "../public/assets/like-icon.svg";
+import LinkIcon from "../public/assets/copy-icon.svg";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Link } from "next/link";
 import { format } from "date-fns";
@@ -38,16 +38,17 @@ export default function Tweet(props) {
               </p>
             </div>
           </a>
-          <p className="ml-2 pb-5">{props.text}</p>
-          <div className="flex justify-between p-2">
-            <ChatBubbleOutlineIcon className="h-3" />
-            <RepeatIcon />
-            <FavoriteBorderIcon
-            // onClick={() => {
-            //   likeTweet();
-            // }}
+          <p className="ml-2 pb-2">{props.text}</p>
+          <div className="flex justify-between pb-4 pt-2 pl-2 pr-2">
+            <ChatBubbleOutlineIcon className="w-5" />
+            <RetweetIcon className="w-5" />
+            <LikeIcon
+              className="w-5"
+              // onClick={() => {
+              //   likeTweet();
+              // }}
             />
-            <LinkIcon />
+            <LinkIcon className="w-5 mr-2" />
           </div>
         </div>
       </div>
