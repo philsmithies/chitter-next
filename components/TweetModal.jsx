@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 
 const TweetModal = ({ user }) => {
   const [tweet, setTweet] = useState("");
+  const [modalVisibility, setModalVisibility] = useState(false);
   const [session, loading] = useSession();
   const router = useRouter();
 
@@ -29,30 +30,55 @@ const TweetModal = ({ user }) => {
         method: "POST",
       });
       const result = await res.json();
+      setModalVisibility(false);
+      router.reload(window.location.pathname);
     } else {
       router.push("/signup");
     }
   };
 
-  // const { data, error } = useSwr("/api/tweets", handler);
+  const openModal = () => {
+    console.log("clicked");
+    setModalVisibility(true);
+  };
 
   return (
     <div>
-      {session && (
-        <input
-          className="border-2 rounded-sm mb-1"
-          placeholder="tweet here"
-          onChange={(e) => {
-            setTweet(e.target.value);
-          }}
-        />
-      )}
       <button
         className="border-2 flex justify-center pt-3 pb-3 rounded-full bg-yellow-400 hover:bg-yellow-500 hover:text-white w-36 font-medium"
-        onClick={postTweet}
+        onClick={openModal}
       >
         Tweet
       </button>
+      {modalVisibility && (
+        <div
+          className={`fixed inset-0 
+      bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-20`}
+        >
+          <div
+            class={`relative top-40 mx-auto p-5 border w-96 shadow-lg rounded-xl bg-white`}
+          >
+            <div class="mt-3 text-center">
+              <input
+                type="text"
+                id="tweetInput"
+                name="tweet"
+                placeholder="Whats happening?"
+                required
+                onChange={(e) => {
+                  setTweet(e.target.value);
+                }}
+              />{" "}
+              <button
+                className="border-2 flex justify-center items-center pt-3 pb-3 rounded-full bg-yellow-400 hover:bg-yellow-500 hover:text-white w-20 h-10 font-medium"
+                onClick={postTweet}
+              >
+                Tweet
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
