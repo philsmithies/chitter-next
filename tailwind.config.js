@@ -31,7 +31,7 @@ module.exports = {
         "6vw": "6vw",
       },
       margin: {
-        minus: "-1rem",
+        minus: "-2.5rem",
       },
     },
   },

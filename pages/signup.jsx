@@ -56,7 +56,6 @@ const SignUp = () => {
         }
       ).then((response) => {
         setLoading(false);
-        console.log(response);
         if (response.data.success) {
           signIn();
         }

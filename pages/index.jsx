@@ -13,7 +13,7 @@ export default function Home({ isConnected }) {
   const [session, loading] = useSession();
 
   return (
-    <div>
+    <div className="max-w-screen-sm m-auto">
       <Feed />
     </div>
   );

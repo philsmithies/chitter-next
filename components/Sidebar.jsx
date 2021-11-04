@@ -6,7 +6,7 @@ const Sidebar = () => {
   const [session, loading] = useSession();
   return (
     <>
-      <div className="flex bg-white flex-col pl-5 pr-5 w-2/12">
+      <div className="flex flex-col w-2/12">
         <div className="pt-5">
           <a href="/">
             <img

@@ -7,8 +7,8 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <div className="bg-black h-screen">
-        <div className="flex h-full bg-white justify-evenly">
+      <div className="h-screen">
+        <div className="flex h-full bg-white pl-5 pr-5 max-w-screen-xl m-auto">
           <SideBar />
           <div className="flex-1">{children}</div>
           <SignUpBar />
