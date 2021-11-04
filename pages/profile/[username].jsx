@@ -36,7 +36,7 @@ const Profile = ({ user, tweets }) => {
   console.log(tweets);
   return (
     <div className="border-2 h-screen">
-      <div className="bg-red-400 w-full flex h-20 items-center">
+      <div className="w-full flex h-20 items-center border-b-2">
         <div className="ml-5">
           <Link href="/">
             <ArrowBackIcon style={{ fill: "orange" }} />
@@ -50,8 +50,20 @@ const Profile = ({ user, tweets }) => {
           </p>
         </div>
       </div>
-      <div>
-        <Image src="banner.jpeg" alt="Sample Banner" width={500} height={500} />
+      <div
+        style={{
+          width: "100%",
+          height: "200px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <Image
+          src="/banner.jpeg"
+          layout="fill"
+          alt="Banner Image"
+          objectFit="cover"
+        />
       </div>
 
       <p>{user.fullName}</p>
