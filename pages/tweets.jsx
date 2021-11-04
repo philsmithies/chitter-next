@@ -1,16 +1,15 @@
 import { connectToDatabase } from "../util/mongodb";
+import SideArrow from "../public/assets/close.svg";
+
 export default function Tweets({ tweets }) {
   return (
-    <div>
+    <div className="h-full">
+      {/* <img
+        src={"../public/arrow.svg"}
+        className="fill-current text-yellow-400"
+      /> */}
+      <SideArrow />
       <h1>Top 20 Tweets of All Time</h1>
-      <ul>
-        {tweets.map((tweet, key) => (
-          <li key={key}>
-            <h2>{tweet.text}</h2>
-            <p>Created at:{tweet.createdAt}</p>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
