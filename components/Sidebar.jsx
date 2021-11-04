@@ -11,17 +11,15 @@ const Sidebar = () => {
           <a href="/">
             <img
               src={"/bird.png"}
-              className="hover:bg-yellow-400 rounded-r-xl mr-5 p-2 h-14"
+              className="mr-5 p-2 h-14"
               alt="chitter logo"
             />
           </a>
         </div>
-        <a href="/">
-          <div className="flex pt-3 pb-3 rounded-full hover:text-yellow-400">
-            <img src={"/hashtag.png"} alt="hashtag" className="h-7 pl-3" />
-            <h1 className="self-center pl-2">Explore</h1>
-          </div>
-        </a>
+        <div className="flex pt-3 pb-3 rounded-full">
+          <img src={"/hashtag.png"} alt="hashtag" className="h-7 pl-3" />
+          <h1 className="self-center pl-2">Explore</h1>
+        </div>
         {/* {data ? <TweetModal /> : <TweetModal link={"/signup"} />} */}
 
         <TweetModal user={session ? session.user : ""} />

@@ -20,6 +20,9 @@ module.exports = {
         secondary: "#ECC94B",
         backgroundColor: "#1a202c",
       },
+      width: {
+        94: "22rem",
+      },
       maxWidth: {
         "1/4": "25%",
         "1/2": "50%",
