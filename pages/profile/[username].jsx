@@ -39,11 +39,11 @@ const Profile = ({ user, tweets }) => {
   };
 
   return (
-    <div className="border-2 h-screen max-w-screen-sm m-auto">
+    <div className="border-2 h-screen max-w-screen-sm m-auto flex flex-col">
       <div className="w-full flex h-20 items-center border-b-2">
         <div className="ml-5">
           <Link href="/">
-            <ArrowBackIcon style={{ fill: "orange" }} />
+            <ArrowBackIcon className="fill-current text-yellow-400" />
           </Link>
         </div>
         <div className="pl-8">
@@ -54,15 +54,7 @@ const Profile = ({ user, tweets }) => {
           </p>
         </div>
       </div>
-      <div
-        style={{
-          width: "100%",
-          height: "200px",
-          position: "relative",
-          overflow: "hidden",
-          zIndex: 0,
-        }}
-      >
+      <div className="w-full h-200 relative overflow-hidden z-0">
         <Image
           src="/banner.jpeg"
           layout="fill"
@@ -70,12 +62,7 @@ const Profile = ({ user, tweets }) => {
           objectFit="cover"
         />
       </div>
-      <div
-        style={{
-          position: "relative",
-          zIndex: 10,
-        }}
-      >
+      <div className="relative z-10">
         {user.publicId ? (
           <CloudImage
             className="profile_hero"
@@ -90,33 +77,18 @@ const Profile = ({ user, tweets }) => {
           />
         )}
       </div>
-      {/* <div className="followBtn">Follow</div>
-      </div>
-      <div className="bio_text">
-        <h3>
-          {user.fullName || ""}
-          <br />
-          <span>@{user.username}</span>
-        </h3>
-        <p>
-          {user.bio}
-          <br />
-          Joined {user.createdAt
-            ? formatDate(user.createdAt)
-            : "November 2021"}{" "}
+      <button className="font-semibold border-2 bg-yellow-400 w-32 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white">
+        Follow
+      </button>
+      <div className="border-b-2 pl-10 pb-6">
+        <h3 className="font-bold text-xl mb-1">{user.fullName || ""}</h3>
+        <h3 className="text-gray-600 mb-1">@{user.username}</h3>
+        <p className="mb-1">{user.bio || "Your first bio"}</p>
+        <p className="text-gray-600">
+          Joined {user.createdAt ? formatDate(user.createdAt) : "November 2021"}{" "}
         </p>
-        {user.bioPhotoId !== "" ? (
-          <div>
-            <CloudImage cloudName="chitter" bioPhotoId={user.bioPhotoId} />
-          </div>
-        ) : (
-          ""
-        )}
-      </div> */}
+      </div>
 
-      <p>{user.fullName}</p>
-      <p>{user.email}</p>
-      <p>{user.image}</p>
       {tweets.map((tweet) => (
         <Tweet
           key={tweet._id}
