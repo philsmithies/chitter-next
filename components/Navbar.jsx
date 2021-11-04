@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 const Navbar = () => {
   const [session, loading] = useSession();
   return (
-    <div className="flex flex-row items-center justify-between bg-yellow-400 border-b-2 border-gray-900">
+    <div className="flex flex-row items-center justify-between bg-yellow-400 border-b-2 border-gray-900 h-16">
       <div>
         <Link href="/" passHref>
           <h2 className="text-4xl font-bold font-body ml-6 cursor-pointer pb-1">

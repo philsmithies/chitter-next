@@ -23,7 +23,7 @@ const SignUpBar = () => {
             </div>
           </a>
         ) : (
-          <div className="flex flex-col p-4 rounded-lg border-2">
+          <div className="flex flex-col pl-2 pr-2 pt-4 pb-4 rounded-lg border-2">
             <h1 className="font-extrabold m-auto">
               Hello, {session.user.username}
             </h1>
