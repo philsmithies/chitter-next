@@ -3,6 +3,9 @@ import { server } from "../../util/server";
 import ProfileFeed from "../../components/ProfileFeed";
 import Feed from "../../components/Feed";
 import Tweet from "../../components/Tweet";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import Link from "next/link";
+import Image from "next/image";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`${server}/api/users/`);
@@ -33,7 +36,24 @@ const Profile = ({ user, tweets }) => {
   console.log(tweets);
   return (
     <div className="border-2 h-screen">
-      <p>{user.username}</p>
+      <div className="bg-red-400 w-full flex h-20 items-center">
+        <div className="ml-5">
+          <Link href="/">
+            <ArrowBackIcon style={{ fill: "orange" }} />
+          </Link>
+        </div>
+        <div className="pl-8">
+          <h3 className="font-bold text-xl">{user.username}</h3>
+          <p className="font-semibold text-gray-600">
+            {tweets.length}
+            {tweets.length != 1 ? " tweets" : " tweet"}
+          </p>
+        </div>
+      </div>
+      <div>
+        <Image src="banner.jpeg" alt="Sample Banner" width={500} height={500} />
+      </div>
+
       <p>{user.fullName}</p>
       <p>{user.email}</p>
       <p>{user.image}</p>
