@@ -2,7 +2,6 @@ import RetweetIcon from "../public/assets/retweet-icon.svg";
 import ChatBubbleOutlineIcon from "../public/assets/quote-outline.svg";
 import LikeIcon from "../public/assets/like-icon.svg";
 import LinkIcon from "../public/assets/copy-icon.svg";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Link } from "next/link";
 import { format } from "date-fns";
 import { Image } from "cloudinary-react";
