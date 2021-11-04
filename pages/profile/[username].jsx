@@ -39,7 +39,7 @@ const Profile = ({ user, tweets }) => {
   };
 
   return (
-    <div className="border-2 h-screen max-w-screen-sm m-auto flex flex-col">
+    <div className="border-l-2 border-r-2 h-full max-w-screen-sm m-auto flex flex-col">
       <div className="w-full flex h-20 items-center border-b-2">
         <div className="ml-5">
           <Link href="/">
@@ -64,7 +64,6 @@ const Profile = ({ user, tweets }) => {
           overflow: "hidden",
           zIndex: 0,
         }}
-        className="bg-red-400"
       >
         <Image
           src="/banner.jpeg"

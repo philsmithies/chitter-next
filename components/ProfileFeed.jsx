@@ -11,7 +11,7 @@ export default function ProfileFeed({ username }) {
   if (error) return <div>Failed to load Tweets</div>;
 
   return (
-    <div className="flex justify-center border-2">
+    <div className="flex justify-center">
       {!data && (
         <div className="mt-4">
           <PuffLoader color={"#36D7B7"} size={60} />
