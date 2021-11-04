@@ -11,7 +11,7 @@ export default function Feed() {
   if (error) return <div>Failed to load Tweets</div>;
 
   return (
-    <div className="flex justify-center h-screen border-r-2 border-l-2">
+    <div className="flex justify-center h-full border-r-2 border-l-2">
       {!data && (
         <div className="mt-4">
           <PuffLoader color={"#36D7B7"} size={60} />

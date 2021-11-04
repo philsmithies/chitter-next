@@ -56,7 +56,16 @@ const Profile = ({ user, tweets }) => {
           </p>
         </div>
       </div>
-      <div className="w-full h-200 relative overflow-hidden z-0">
+      <div
+        style={{
+          width: "100%",
+          height: "200px",
+          position: "relative",
+          overflow: "hidden",
+          zIndex: 0,
+        }}
+        className="bg-red-400"
+      >
         <Image
           src="/banner.jpeg"
           layout="fill"
