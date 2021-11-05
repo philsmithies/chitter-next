@@ -1,20 +1,21 @@
-import Footer from "./Footer";
-import SignUpBar from "../components/SignUpBar";
-import SideBar from "../components/Sidebar";
+import Footer from "../Footer";
+import SignUpBar from "../SignUpBar";
+import SideBar from "../Sidebar";
 import { useSession } from "next-auth/client";
+import styles from "./layout.module.css";
 
 const Layout = ({ children }) => {
   const session = useSession();
   return (
     <>
       <div className="h-screen">
-        <div className="flex h-full bg-white pl-5 pr-5 max-w-screen-xl m-auto">
+        <div className={styles.layoutWrapper}>
           <SideBar />
           <div className="flex-1">{children}</div>
           <SignUpBar />
         </div>
       </div>
-      {session && <Footer />}
+      {session[0] == null ? <Footer /> : ""}
     </>
   );
 };

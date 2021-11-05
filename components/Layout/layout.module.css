@@ -1,0 +1,3 @@
+.layoutWrapper {
+  @apply flex h-full bg-white pl-5 pr-5 max-w-screen-xl m-auto;
+}

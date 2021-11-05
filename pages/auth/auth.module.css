@@ -1,0 +1,11 @@
+.signUpBtn {
+  @apply border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-80 mx-auto hover:bg-yellow-500 hover:text-white;
+}
+
+.inputField {
+  @apply border-2 rounded-md p-1;
+}
+
+.signInSecondary {
+  @apply text-yellow-500 font-bold hover:text-yellow-600;
+}

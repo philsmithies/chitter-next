@@ -1,12 +1,13 @@
 import { getCsrfToken } from "next-auth/client";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import styles from "../auth.module.css";
 
 export default function SignIn({ csrfToken }) {
   const router = useRouter();
 
-  const signUp = () => {
-    router.push(`/auth/signup`);
+  const signIn = () => {
+    router.push(`/`);
   };
 
   return (
@@ -26,28 +27,22 @@ export default function SignIn({ csrfToken }) {
             placeholder="Username"
             name="username"
             type="text"
-            className="border-2 rounded-md p-1"
+            className={styles.inputField}
           />
           <br />
           <input
             placeholder="Password"
             name="password"
             type="password"
-            className="border-2 rounded-md p-1 mb-2"
+            className={styles.inputField}
           />
-          <button
-            type="submit"
-            className="border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-80 mx-auto hover:bg-yellow-500 hover:text-white"
-          >
+          <button type="submit" className={styles.signUpBtn}>
             Sign In
           </button>
         </form>
         <h1 className="text-s mt-2 mb-2 mx-auto">
           Don't have an account?{" "}
-          <button
-            onClick={signUp}
-            className="text-yellow-500 font-bold hover:text-yellow-600"
-          >
+          <button onClick={signIn} className={styles.signInSecondary}>
             Sign Up
           </button>
         </h1>

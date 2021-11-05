@@ -2,6 +2,7 @@ import { signIn } from "next-auth/client";
 import React, { useRef, useState } from "react";
 import Axios from "axios";
 import PuffLoader from "react-spinners/PuffLoader";
+import styles from "../auth.module.css";
 
 const SignUp = () => {
   const url = "https://api.cloudinary.com/v1_1/dryaxqxie/image/upload";
@@ -63,7 +64,7 @@ const SignUp = () => {
     <div className={`h-screen flex items-center justify-center`}>
       {loading && (
         <div className="flex flex-col">
-          <img src="/images/bird.png" className="m-auto w-16 mb-4" />
+          <img src="/images/bird.png" className="m-auto w-12 mb-4" />
           <PuffLoader color={"#36D7B7"} size={100} />
         </div>
       )}
@@ -78,40 +79,36 @@ const SignUp = () => {
             onSubmit={onFormSubmit}
           >
             <input
-              className="border-2 rounded-md p-1"
+              className={styles.inputField}
               ref={usernameRef}
               placeholder="Username"
             />
             <br />
             <input
-              className="border-2 rounded-md p-1"
+              className={styles.inputField}
               ref={fullNameRef}
               placeholder="Full Name"
             />
             <br />
             <input
-              className="border-2 rounded-md p-1"
+              className={styles.inputField}
               ref={passwordRef}
               placeholder="Password"
             />
             <br />
             <input
-              className="border-2 p-1 mb-2 bg-white"
+              className={styles.inputField}
               accept="image/*"
               multiple
               type="file"
               onChange={onChange}
+              required
             />
-            <button className="border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-80 mx-auto hover:bg-yellow-500 hover:text-white">
-              Submit
-            </button>
+            <button className={styles.signUpBtn}>Submit</button>
           </form>
           <h1 className="text-s mt-2 mb-2 mx-auto">
             Already have an account?{" "}
-            <button
-              onClick={signIn}
-              className="text-yellow-500 font-bold hover:text-yellow-600"
-            >
+            <button onClick={signIn} className={styles.signInSecondary}>
               Sign In
             </button>
           </h1>
