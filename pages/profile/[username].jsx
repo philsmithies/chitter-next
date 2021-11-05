@@ -8,30 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CloudImage } from "cloudinary-react";
 import { format } from "date-fns";
-
-export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/users/`);
-  const data = await res.json();
-  // map data to an array of path objects with params (username)
-  const paths = data.result.map((user) => {
-    return {
-      params: { username: user.username.toString() },
-    };
-  });
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async (context) => {
-  const username = context.params.username;
-  const res = await fetch(`${server}/api/user/` + username);
-  const data = await res.json();
-  return {
-    props: { user: data.user, tweets: data.tweets },
-  };
-};
+import Layout from "../../components/Layout";
 
 const Profile = ({ user, tweets }) => {
   const formatDate = (date) => {
@@ -112,6 +89,34 @@ const Profile = ({ user, tweets }) => {
       ))}
     </div>
   );
+};
+
+export const getStaticPaths = async () => {
+  const res = await fetch(`${server}/api/users/`);
+  const data = await res.json();
+  // map data to an array of path objects with params (username)
+  const paths = data.result.map((user) => {
+    return {
+      params: { username: user.username.toString() },
+    };
+  });
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const username = context.params.username;
+  const res = await fetch(`${server}/api/user/` + username);
+  const data = await res.json();
+  return {
+    props: { user: data.user, tweets: data.tweets },
+  };
+};
+
+Profile.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Profile;

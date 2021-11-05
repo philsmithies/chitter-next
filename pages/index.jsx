@@ -1,13 +1,9 @@
-import Head from "next/head";
+// import Head from "next/head";
 import Feed from "../components/Feed";
-import SideBar from "../components/Sidebar";
-import TweetModal from "../components/TweetModal";
 import clientPromise from "../lib/clientPromise";
-import Header from "../components/Header";
 import React from "react";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/client";
-import SignUpBar from "../components/SignUpBar";
+import { useSession } from "next-auth/client";
+import Layout from "../components/Layout";
 
 export default function Home({ isConnected }) {
   const [session, loading] = useSession();
@@ -18,6 +14,10 @@ export default function Home({ isConnected }) {
     </div>
   );
 }
+
+Home.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
 
 export async function getServerSideProps(context) {
   const client = await clientPromise;

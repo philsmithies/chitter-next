@@ -1,8 +1,8 @@
 import "tailwindcss/tailwind.css";
-import Layout from "../components/Layout";
 import { Provider } from "next-auth/client";
 
 function MyApp({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page);
   return (
     <Provider
       options={{
@@ -11,9 +11,7 @@ function MyApp({ Component, pageProps }) {
       }}
       session={pageProps.session}
     >
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      {getLayout(<Component {...pageProps} />)}
     </Provider>
   );
 }
