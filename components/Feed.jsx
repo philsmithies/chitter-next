@@ -28,11 +28,7 @@ export default function Feed() {
                 <Tweet
                   key={tweet._id}
                   fullName={tweet.user ? tweet.user.fullName : ""}
-                  publicId={
-                    tweet.user && tweet.user.image != "no image"
-                      ? tweet.user.image
-                      : ""
-                  }
+                  publicId={tweet.user ? tweet.user.image : ""}
                   // imageUrl={tweet.imageUrl}
                   text={tweet.text}
                   username={tweet.user ? tweet.user.username : ""}

@@ -6,7 +6,6 @@ import PuffLoader from "react-spinners/PuffLoader";
 const SignUp = () => {
   const url = "https://api.cloudinary.com/v1_1/dryaxqxie/image/upload";
   const preset = "chitter";
-  const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const usernameRef = useRef(null);
   const fullNameRef = useRef(null);
@@ -27,22 +26,16 @@ const SignUp = () => {
     const imageRes = await Axios.post(url, formData);
     setImage(imageRes.data.secure_url);
 
-    const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const username = usernameRef.current.value;
     const fullName = fullNameRef.current.value;
 
-    if (!email || !email.includes("@") || !password) {
-      alert("Invalid Email");
-      return;
-    }
     try {
       await Axios.post(
         "/api/users",
         {
-          email,
-          password,
           username,
+          password,
           fullName,
           image,
         },

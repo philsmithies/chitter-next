@@ -15,13 +15,17 @@ export default function Tweet(props) {
     <div className="bg-white border-gray-400 border-b-2 w-full">
       <div className="flex pt-2 pl-2">
         <div>
-          {props.publicId ? (
-            <Image cloudName="chitter" publicId={props.publicId} />
+          {props.publicId !== "no image" ? (
+            <Image
+              cloudName="chitter"
+              publicId={props.publicId}
+              className="w-14 h-14 rounded-full"
+            />
           ) : (
             <img
               className="w-14 rounded-full"
               src={"/bluetit.jpg"}
-              alt="new user"
+              alt="new user image"
             ></img>
           )}
         </div>

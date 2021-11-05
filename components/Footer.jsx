@@ -22,7 +22,7 @@ const Footer = () => {
               Sign Up
             </a>
             <a
-              href="/auth/login"
+              href="/auth/signin"
               className="border-2 flex justify-center pt-1 pb-1 mr-5 rounded-full bg-white text-yellow-400 hover:bg-yellow-400 hover:text-white w-24 h-10 font-bold"
             >
               Log In

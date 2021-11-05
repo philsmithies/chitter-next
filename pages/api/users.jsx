@@ -18,27 +18,22 @@ export default async (req, res) => {
       break;
     case "POST":
       try {
-        const { email, password, username, fullName, image } = req.body;
-        if (!email || !email.includes("@") || !password) {
-          res.status(422).json({ message: "Invalid Data" });
-          return;
-        }
-        const checkExisting = await User.findOne({ email: email });
+        const { password, username, fullName, image } = req.body;
+
+        const checkExisting = await User.findOne({ username: username });
         if (checkExisting) {
           res.status(422).json({ message: "User already exists" });
-          client.close();
           return;
         }
         const user = await User.create({
-          email,
           password: await hash(password, 12),
           username,
           fullName,
           image,
         });
         res.status(201).json({ success: true, result: user });
-        client.close();
       } catch (error) {
+        console.log(error);
         res.status(400).json({ success: false });
       }
       break;

@@ -15,7 +15,8 @@ const Layout = ({ children }) => {
           <SignUpBar />
         </div>
       </div>
-      {session && <Footer />}
+
+      {!session && <Footer />}
     </>
   );
 };
