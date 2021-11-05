@@ -2,13 +2,34 @@ import { useState } from "react";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import CloseIcon from "../public/assets/close.svg";
+import Axios from "axios";
+
 const TweetModal = ({ user }) => {
+  const url = "https://api.cloudinary.com/v1_1/dryaxqxie/image/upload";
+  const preset = "chitter";
+  const [image, setImage] = useState("");
   const [tweet, setTweet] = useState("");
   const [modalVisibility, setModalVisibility] = useState(false);
   const [session, loading] = useSession();
+  const [previewSource, setPreviewSource] = useState("");
   const router = useRouter();
 
-  const postTweet = async (event) => {
+  const onChange = (e) => {
+    setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    previewFile(file);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    // reads the file as url to create preview
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const postTweet = async (publicId) => {
     if (session) {
       event.preventDefault();
 
@@ -17,6 +38,7 @@ const TweetModal = ({ user }) => {
           {
             text: tweet,
             user: user,
+            imageUrl: publicId,
           },
           {
             withCredentials: true,
@@ -32,6 +54,20 @@ const TweetModal = ({ user }) => {
       router.reload(window.location.pathname);
     } else {
       router.push("/auth/signup");
+    }
+  };
+
+  const checkValidation = async (e) => {
+    if (!image) {
+      let publicId = "";
+      postTweet(publicId);
+    } else {
+      const formData = new FormData();
+      formData.append("file", image);
+      formData.append("upload_preset", preset);
+      const res = await Axios.post(url, formData);
+      let publicId = res.data.secure_url;
+      postTweet(publicId);
     }
   };
 
@@ -75,10 +111,24 @@ const TweetModal = ({ user }) => {
                     setTweet(e.target.value);
                   }}
                 />
+                <input
+                  required
+                  accept="image/*"
+                  // className={classes.input}
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={onChange}
+                />
               </div>
+              {previewSource && (
+                <div className="w-24 h-24 overflow-hidden">
+                  <img src={previewSource} alt="chosen" className="max-w-s" />
+                </div>
+              )}
               <button
                 className="self-end border-2 flex justify-center items-center pt-3 pb-3 mr-4 rounded-full bg-yellow-400 hover:bg-yellow-500 hover:text-white w-24 h-10 font-medium"
-                onClick={postTweet}
+                onClick={checkValidation}
               >
                 Tweet
               </button>

@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="flex">
           <div className="flex flex-col mr-24">
             <h2 className="font-extrabold">Don't miss what's happening.</h2>
-            <p>People on Chitter the first to know.</p>
+            <p>People on Chitter are the first to know.</p>
           </div>
           <div className="flex items-center">
             <a href="/auth/signup" className={styles.footerBtn}>
