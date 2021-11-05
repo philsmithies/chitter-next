@@ -10,14 +10,14 @@ const Sidebar = () => {
         <div className="pt-5">
           <a href="/">
             <img
-              src={"/bird.png"}
+              src={"/images/bird.png"}
               className="mr-5 p-2 h-14"
               alt="chitter logo"
             />
           </a>
         </div>
         <div className="flex pt-3 pb-3 rounded-full">
-          <img src={"/hashtag.png"} alt="hashtag" className="h-7 pl-3" />
+          <img src={"/images/hashtag.png"} alt="hashtag" className="h-7 pl-3" />
           <h1 className="self-center pl-2">Explore</h1>
         </div>
         {/* {data ? <TweetModal /> : <TweetModal link={"/signup"} />} */}

@@ -1,7 +1,8 @@
 import useSwr from "swr";
 import Link from "next/link";
-import Tweet from "./Tweet";
+import Tweet from "../Tweet";
 import PuffLoader from "react-spinners/PuffLoader";
+import styles from "./Feed.module.css";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -11,7 +12,7 @@ export default function Feed() {
   if (error) return <div>Failed to load Tweets</div>;
 
   return (
-    <div className="flex justify-center h-full border-r-2 border-l-2">
+    <div className={styles.feedWrapper}>
       {!data && (
         <div className="mt-4">
           <PuffLoader color={"#36D7B7"} size={60} />
@@ -29,7 +30,7 @@ export default function Feed() {
                   key={tweet._id}
                   fullName={tweet.user ? tweet.user.fullName : ""}
                   publicId={tweet.user ? tweet.user.image : ""}
-                  // imageUrl={tweet.imageUrl}
+                  imageUrl={tweet.imageUrl ? tweet.imageUrl : ""}
                   text={tweet.text}
                   username={tweet.user ? tweet.user.username : ""}
                   createdAt={tweet.createdAt}

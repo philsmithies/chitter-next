@@ -20,6 +20,7 @@ const SignUp = () => {
   const onFormSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", preset);
@@ -59,64 +60,63 @@ const SignUp = () => {
   };
 
   return (
-    <div
-      className={`h-screen flex ${
-        !loading ? "items-center" : ""
-      } justify-center`}
-    >
+    <div className={`h-screen flex items-center justify-center`}>
       {loading && (
-        <div className="mt-36">
+        <div className="flex flex-col">
+          <img src="/images/bird.png" className="m-auto w-16 mb-4" />
           <PuffLoader color={"#36D7B7"} size={100} />
         </div>
       )}
-      <div className="flex flex-col w-3/12">
-        <img src="/bird.png" className="m-auto w-12 mb-2" />
-        <h1 className="font-semibold text-2xl mb-2 m-auto">
-          Join Chitter Today.
-        </h1>
-        <form
-          className={`flex flex-col pt-3 rounded ${loading ? "hidden" : ""}`}
-          onSubmit={onFormSubmit}
-        >
-          <input
-            className="border-2 rounded-md p-1"
-            ref={usernameRef}
-            placeholder="Username"
-          />
-          <br />
-          <input
-            className="border-2 rounded-md p-1"
-            ref={fullNameRef}
-            placeholder="Full Name"
-          />
-          <br />
-          <input
-            className="border-2 rounded-md p-1"
-            ref={passwordRef}
-            placeholder="Password"
-          />
-          <br />
-          <input
-            className="border-2 p-1 mb-2 bg-white"
-            accept="image/*"
-            multiple
-            type="file"
-            onChange={onChange}
-          />
-          <button className="border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-80 mx-auto hover:bg-yellow-500 hover:text-white">
-            Submit
-          </button>
-        </form>
-        <h1 className="text-s mt-2 mb-2 mx-auto">
-          Already have an account?{" "}
-          <button
-            onClick={signIn}
-            className="text-yellow-500 font-bold hover:text-yellow-600"
+      {!loading && (
+        <div className="flex flex-col items-center">
+          <img src="/images/bird.png" className="m-auto w-12 mb-2" />
+          <h1 className="font-semibold text-2xl mb-2 m-auto">
+            Join Chitter Today.
+          </h1>
+          <form
+            className={`flex flex-col pt-3 rounded ${loading ? "hidden" : ""}`}
+            onSubmit={onFormSubmit}
           >
-            Sign In
-          </button>
-        </h1>
-      </div>
+            <input
+              className="border-2 rounded-md p-1"
+              ref={usernameRef}
+              placeholder="Username"
+            />
+            <br />
+            <input
+              className="border-2 rounded-md p-1"
+              ref={fullNameRef}
+              placeholder="Full Name"
+            />
+            <br />
+            <input
+              className="border-2 rounded-md p-1"
+              ref={passwordRef}
+              placeholder="Password"
+            />
+            <br />
+            <input
+              className="border-2 p-1 mb-2 bg-white"
+              accept="image/*"
+              multiple
+              type="file"
+              onChange={onChange}
+            />
+            <button className="border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-80 mx-auto hover:bg-yellow-500 hover:text-white">
+              Submit
+            </button>
+          </form>
+          <h1 className="text-s mt-2 mb-2 mx-auto">
+            Already have an account?{" "}
+            <button
+              onClick={signIn}
+              className="text-yellow-500 font-bold hover:text-yellow-600"
+            >
+              Sign In
+            </button>
+          </h1>
+        </div>
+      )}
     </div>
   );
 };

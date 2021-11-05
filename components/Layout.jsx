@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SignUpBar from "../components/SignUpBar";
 import SideBar from "../components/Sidebar";
@@ -15,8 +14,7 @@ const Layout = ({ children }) => {
           <SignUpBar />
         </div>
       </div>
-
-      {!session && <Footer />}
+      {session && <Footer />}
     </>
   );
 };

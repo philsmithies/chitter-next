@@ -1,4 +1,5 @@
-import Composer from "../public/assets/composer-icon.svg";
+import Composer from "../../public/assets/composer-icon.svg";
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
@@ -8,23 +9,17 @@ const Footer = () => {
           <Composer className="w-12 fixed bottom-24 right-52 border-2 rounded-full bg-white" />
         </button>
       </div> */}
-      <div className="pt-1 pb-1 fixed bottom-0 w-full flex flex-col items-center bg-yellow-400 border-t-2 border-gray-900 h-16">
+      <div className={styles.footerWrapper}>
         <div className="flex">
           <div className="flex flex-col mr-24">
             <h2 className="font-extrabold">Don't miss what's happening.</h2>
             <p>People on Chitter the first to know.</p>
           </div>
           <div className="flex items-center">
-            <a
-              href="/auth/signup"
-              className="border-2 flex justify-center pt-1 pb-1 mr-5 rounded-full bg-white text-yellow-400 hover:bg-yellow-400 hover:text-white w-24 h-10 font-bold"
-            >
+            <a href="/auth/signup" className={styles.footerBtn}>
               Sign Up
             </a>
-            <a
-              href="/auth/signin"
-              className="border-2 flex justify-center pt-1 pb-1 mr-5 rounded-full bg-white text-yellow-400 hover:bg-yellow-400 hover:text-white w-24 h-10 font-bold"
-            >
+            <a href="/auth/signin" className={styles.footerBtn}>
               Log In
             </a>
           </div>

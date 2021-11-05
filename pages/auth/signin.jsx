@@ -10,9 +10,9 @@ export default function SignIn({ csrfToken }) {
   };
 
   return (
-    <div className={`h-screen flex items-center justify-center`}>
-      <div className="flex flex-col w-3/12">
-        <img src="/bird.png" className="m-auto w-12 mb-2" />
+    <div className={`h-screen flex items-center justify-center m-auto`}>
+      <div className="flex flex-col items-center">
+        <img src="/images/bird.png" className="m-auto w-12 mb-2" />
         <h1 className="font-semibold text-2xl mb-2 m-auto">
           Log in to Chitter
         </h1>

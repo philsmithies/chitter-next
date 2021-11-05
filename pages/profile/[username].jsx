@@ -43,7 +43,7 @@ const Profile = ({ user, tweets }) => {
         }}
       >
         <Image
-          src="/banner.jpeg"
+          src="/images/banner.jpeg"
           layout="fill"
           alt="Banner Image"
           objectFit="cover"
@@ -58,7 +58,7 @@ const Profile = ({ user, tweets }) => {
           />
         ) : (
           <img
-            src={"/bluetit.jpg"}
+            src={"/images/bluetit.jpg"}
             alt="new user"
             className="rounded-full w-20 ml-10 m-minus"
           />

@@ -1,0 +1,7 @@
+.footerWrapper {
+  @apply pt-1 pb-1 fixed bottom-0 w-full flex flex-col items-center bg-yellow-400 border-t-2 border-gray-900 h-16;
+}
+
+.footerBtn {
+  @apply w-24 h-10 font-bold border-2 flex justify-center pt-1 pb-1 mr-5 rounded-full bg-white text-yellow-400 hover:bg-yellow-400 hover:text-white;
+}

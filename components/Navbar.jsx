@@ -32,7 +32,7 @@ const Navbar = () => {
             <a href={`/profile/${session.user.username}`}>
               <img
                 width="100px"
-                src={"/bluetit.jpg"}
+                src={"/images/bluetit.jpg"}
                 className="rounded-full h-12 w-12 mr-3 hover:cursor-pointer"
               />
             </a>

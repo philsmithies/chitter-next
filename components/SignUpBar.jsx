@@ -33,7 +33,7 @@ const SignUpBar = () => {
               <a href={`/profile/${session.user.username}`}>
                 <img
                   width="100px"
-                  src={"/bluetit.jpg"}
+                  src={"/images/bluetit.jpg"}
                   className="rounded-full h-12 w-12 mt-1 mx-auto hover:cursor-pointer"
                 />
               </a>
