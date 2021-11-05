@@ -92,6 +92,10 @@ const options = {
       return token;
     },
   },
+  pages: {
+    signIn: "/auth/signin",
+    signOut: "/auth/signout",
+  },
 };
 
 export default (req, res) => NextAuth(req, res, options);

@@ -22,6 +22,7 @@ Home.getLayout = function getLayout(page) {
 export async function getServerSideProps(context) {
   const client = await clientPromise;
 
+  // mongodb info here
   // client.db() will be the default database passed in the MONGODB_URI
   // You can change the database by calling the client.db() function and specifying a database like:
   // const db = client.db("myDatabase");

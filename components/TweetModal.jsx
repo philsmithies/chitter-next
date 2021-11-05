@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import CloseIcon from "../public/assets/close.svg";
-
 const TweetModal = ({ user }) => {
   const [tweet, setTweet] = useState("");
   const [modalVisibility, setModalVisibility] = useState(false);

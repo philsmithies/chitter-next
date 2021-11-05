@@ -67,7 +67,7 @@ const SignUp = () => {
 
   return (
     <div
-      className={`bg-gray-800 h-screen flex ${
+      className={`h-screen flex ${
         !loading ? "items-center" : ""
       } justify-center`}
     >
@@ -76,45 +76,51 @@ const SignUp = () => {
           <PuffLoader color={"#36D7B7"} size={100} />
         </div>
       )}
-      <form
-        className={`bg-white w-3/12 flex flex-col mb-56 p-3 rounded ${
-          loading ? "hidden" : ""
-        }`}
-        onSubmit={onFormSubmit}
-      >
-        <input
-          className="border-2 rounded-md p-1"
-          ref={emailRef}
-          placeholder="email"
-        />
-        <br />
-        <input
-          className="border-2 rounded-md p-1"
-          ref={usernameRef}
-          placeholder="username"
-        />
-        <br />
-        <input
-          className="border-2 rounded-md p-1"
-          ref={fullNameRef}
-          placeholder="full name"
-        />
-        <br />
-        <input
-          className="border-2 rounded-md p-1"
-          ref={passwordRef}
-          placeholder="password"
-        />
-        <br />
-        <input
-          className="border-2 p-1 mb-2"
-          accept="image/*"
-          multiple
-          type="file"
-          onChange={onChange}
-        />
-        <button className="border-2 mt-3 bg-yellow-400 p-2">Submit</button>
-      </form>
+      <div className="flex flex-col w-3/12">
+        <h1 className="font-semibold text-3xl mb-2">Join Chitter Today.</h1>
+        <form
+          className={`flex flex-col pt-3 rounded ${loading ? "hidden" : ""}`}
+          onSubmit={onFormSubmit}
+        >
+          <input
+            className="border-2 rounded-md p-1"
+            ref={usernameRef}
+            placeholder="Username"
+          />
+          <br />
+          <input
+            className="border-2 rounded-md p-1"
+            ref={fullNameRef}
+            placeholder="Full Name"
+          />
+          <br />
+          <input
+            className="border-2 rounded-md p-1"
+            ref={passwordRef}
+            placeholder="Password"
+          />
+          <br />
+          <input
+            className="border-2 p-1 mb-2 bg-white"
+            accept="image/*"
+            multiple
+            type="file"
+            onChange={onChange}
+          />
+          <button className="border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-80 mx-auto hover:bg-yellow-500 hover:text-white">
+            Submit
+          </button>
+        </form>
+        <h1 className="text-s mt-2 mb-2 mx-auto">
+          Already have an account?{" "}
+          <button
+            onClick={signIn}
+            className="text-yellow-500 font-bold hover:text-yellow-600"
+          >
+            Sign In
+          </button>
+        </h1>
+      </div>
     </div>
   );
 };
