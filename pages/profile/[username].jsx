@@ -80,8 +80,8 @@ const Profile = ({ user, tweets }) => {
         <Tweet
           key={tweet._id}
           fullName={tweet.user ? tweet.user.fullName : ""}
-          // publicId={tweet.user ? tweet.user.publicId : ""}
-          // imageUrl={tweet.imageUrl}
+          publicId={tweet.user ? tweet.user.image : ""}
+          imageUrl={tweet.imageUrl ? tweet.imageUrl : ""}
           text={tweet.text}
           username={tweet.user ? tweet.user.username : ""}
           createdAt={tweet.createdAt}

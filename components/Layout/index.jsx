@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       <div className="h-screen">
         <div className={styles.layoutWrapper}>
           <SideBar />
-          <div className="flex-1">{children}</div>
+          <div className={styles.childrenWrapper}>{children}</div>
           <SignUpBar />
         </div>
       </div>
