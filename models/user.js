@@ -6,17 +6,12 @@ const UserSchema = new Schema(
     username: {
       type: String,
       required: [true, "Please enter a username"],
+      unique: true,
       lowercase: true,
     },
     fullName: {
       type: String,
       required: [true, "Please enter your Name"],
-      lowercase: true,
-    },
-    email: {
-      type: String,
-      required: [true, "Please enter an email"],
-      unique: true,
       lowercase: true,
     },
     password: {
