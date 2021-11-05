@@ -1,5 +1,6 @@
 import { getCsrfToken } from "next-auth/client";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function SignIn({ csrfToken }) {
   const router = useRouter();
@@ -11,7 +12,10 @@ export default function SignIn({ csrfToken }) {
   return (
     <div className={`h-screen flex items-center justify-center`}>
       <div className="flex flex-col w-3/12">
-        <h1 className="font-semibold text-3xl mb-2">Log in to Chitter</h1>
+        <img src="/bird.png" className="m-auto w-12 mb-2" />
+        <h1 className="font-semibold text-2xl mb-2 m-auto">
+          Log in to Chitter
+        </h1>
         <form
           className={`flex flex-col pt-3 rounded`}
           method="post"
@@ -24,11 +28,12 @@ export default function SignIn({ csrfToken }) {
             type="text"
             className="border-2 rounded-md p-1"
           />
+          <br />
           <input
             placeholder="Password"
             name="password"
             type="password"
-            className="border-2 rounded-md p-1"
+            className="border-2 rounded-md p-1 mb-2"
           />
           <button
             type="submit"

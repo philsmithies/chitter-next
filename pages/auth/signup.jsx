@@ -77,7 +77,10 @@ const SignUp = () => {
         </div>
       )}
       <div className="flex flex-col w-3/12">
-        <h1 className="font-semibold text-3xl mb-2">Join Chitter Today.</h1>
+        <img src="/bird.png" className="m-auto w-12 mb-2" />
+        <h1 className="font-semibold text-2xl mb-2 m-auto">
+          Join Chitter Today.
+        </h1>
         <form
           className={`flex flex-col pt-3 rounded ${loading ? "hidden" : ""}`}
           onSubmit={onFormSubmit}
