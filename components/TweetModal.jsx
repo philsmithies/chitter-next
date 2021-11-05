@@ -31,13 +31,13 @@ const TweetModal = ({ user }) => {
       toggleModal();
       router.reload(window.location.pathname);
     } else {
-      router.push("/signup");
+      router.push("/auth/signup");
     }
   };
 
   const toggleModal = () => {
     if (!session) {
-      router.push("/signup");
+      router.push("/auth/signup");
     } else {
       setModalVisibility((prevModalVisibility) => !modalVisibility);
     }

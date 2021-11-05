@@ -15,12 +15,18 @@ const Footer = () => {
             <p>People on Chitter the first to know.</p>
           </div>
           <div className="flex items-center">
-            <button className="border-2 flex justify-center pt-1 pb-1 mr-5 rounded-full bg-white text-yellow-400 w-24 h-10 font-bold">
+            <a
+              href="/auth/signup"
+              className="border-2 flex justify-center pt-1 pb-1 mr-5 rounded-full bg-white text-yellow-400 hover:bg-yellow-400 hover:text-white w-24 h-10 font-bold"
+            >
               Sign Up
-            </button>
-            <button className="border-2 flex justify-center pt-1 pb-1 mr-5 rounded-full bg-white text-yellow-400 w-24 h-10 font-bold">
+            </a>
+            <a
+              href="/auth/login"
+              className="border-2 flex justify-center pt-1 pb-1 mr-5 rounded-full bg-white text-yellow-400 hover:bg-yellow-400 hover:text-white w-24 h-10 font-bold"
+            >
               Log In
-            </button>
+            </a>
           </div>
         </div>
       </div>

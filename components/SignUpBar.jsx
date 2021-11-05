@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const SignUpBar = () => {
   const [session, loading] = useSession();
@@ -13,7 +14,7 @@ const SignUpBar = () => {
     <>
       <div className="flex bg-white flex-col pt-5 pl-5 pr-5 w-3/12">
         {!session ? (
-          <a href="/signup">
+          <Link href="/auth/signup">
             <div className="flex flex-col p-4 rounded-lg border-2">
               <h1 className="font-extrabold">New To Chitter?</h1>
               <p>Sign up now to get your own personalized timeline!</p>
@@ -21,12 +22,19 @@ const SignUpBar = () => {
                 Sign Up
               </button>
             </div>
-          </a>
+          </Link>
         ) : (
           <div className="flex flex-col pl-2 pr-2 pt-4 pb-4 rounded-lg border-2">
             <h1 className="font-extrabold m-auto">
               Hello, {session.user.username}
             </h1>
+            <a href={`/profile/${session.user.username}`}>
+              <img
+                width="100px"
+                src={"/bluetit.jpg"}
+                className="rounded-full h-12 w-12 mr-3 hover:cursor-pointer"
+              />
+            </a>
             <button
               className="w-24 h-10 items-center border-2 flex mx-auto justify-center mt-3 pt-3 pb-3 rounded-full bg-yellow-400 hover:bg-yellow-500 hover:text-white font-medium"
               onClick={goToProfile}

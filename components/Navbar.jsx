@@ -4,18 +4,18 @@ import { signIn, signOut, useSession } from "next-auth/client";
 const Navbar = () => {
   const [session, loading] = useSession();
   return (
-    <div className="flex flex-row items-center justify-between bg-yellow-400 border-b-2 border-gray-900 h-16">
+    <div className="flex flex-row items-center justify-between border-b-2 h-16">
       <div>
         <Link href="/" passHref>
-          <h2 className="text-4xl font-bold font-body ml-6 cursor-pointer pb-1">
-            <span className="text-white">Chitter</span>
+          <h2 className="text-4xl font-bold font-body ml-10 cursor-pointer pb-1">
+            <span className="text-yellow-400">Chitter</span>
           </h2>
         </Link>
       </div>
       <div className="p-4 justify-self-end align-middle">
         {!session ? (
           <div>
-            <Link href="/signup" passHref>
+            <Link href="/auth/signup" passHref>
               <button className="bg-yellow-400 hover:bg-gray-600 transition duration-300 text-white font-semibold py-2 px-4 hover:border-gray-400 rounded mr-2">
                 Sign Up
               </button>
