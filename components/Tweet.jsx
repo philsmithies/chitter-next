@@ -42,6 +42,19 @@ export default function Tweet(props) {
             </div>
           </a>
           <p className="ml-2 pb-2">{props.text}</p>
+          <div className="pr-6 ml-2 mb-2">
+            {props.imageUrl !== "" ? (
+              <a href={props.imageUrl || "/"}>
+                <Image
+                  className="object-cover mt-0.5 max-h-72 w-full rounded-md"
+                  cloudName="chitter"
+                  publicId={props.imageUrl}
+                />
+              </a>
+            ) : (
+              ""
+            )}
+          </div>
           <div className="flex justify-between pb-4 pt-2 pl-2 pr-2">
             <ChatBubbleOutlineIcon className="w-5" />
             <RetweetIcon className="w-5" />
