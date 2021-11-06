@@ -1,6 +1,5 @@
 // import { useRouter } from "next/router";
 import { server } from "../../util/server";
-import ProfileFeed from "../../components/ProfileFeed";
 import Feed from "../../components/Feed";
 import Tweet from "../../components/Tweet";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -39,10 +38,11 @@ const Profile = ({ user, tweets }) => {
           height: "200px",
           position: "relative",
           overflow: "hidden",
-          zIndex: 0,
+          zIndex: 1000,
         }}
+        className="bg-red-400 h-screen"
       >
-        <Image
+        <img
           src="/images/banner.jpeg"
           layout="fill"
           alt="Banner Image"
