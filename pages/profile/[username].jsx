@@ -4,8 +4,8 @@ import Feed from "../../components/Feed";
 import Tweet from "../../components/Tweet";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Link from "next/link";
-import Image from "next/image";
-import { CloudImage } from "cloudinary-react";
+// import Image from "next/image";
+import { Image } from "cloudinary-react";
 import { format } from "date-fns";
 import Layout from "../../components/Layout";
 
@@ -42,7 +42,7 @@ const Profile = ({ user, tweets }) => {
         }}
         className="bg-red-400 h-screen"
       >
-        <Image
+        <img
           src="/images/banner.jpeg"
           layout="fill"
           alt="Banner Image"
@@ -51,7 +51,7 @@ const Profile = ({ user, tweets }) => {
       </div>
       <div className="relative z-10">
         {user.publicId ? (
-          <CloudImage
+          <Image
             className="profile_hero"
             cloudName="chitter"
             publicId={user.publicId}
