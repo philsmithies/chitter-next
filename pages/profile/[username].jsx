@@ -38,11 +38,11 @@ const Profile = ({ user, tweets }) => {
           height: "200px",
           position: "relative",
           overflow: "hidden",
-          zIndex: 1000,
+          zIndex: 300,
         }}
         className="bg-red-400 h-screen"
       >
-        <img
+        <Image
           src="/images/banner.jpeg"
           layout="fill"
           alt="Banner Image"

@@ -1,76 +1,164 @@
-## Example app using MongoDB
+# Chitter
 
-[MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
+<!-- Table of Contents -->
 
-If you want to learn more about MongoDB, visit the following pages:
+## Table of Contents
 
-- [MongoDB Atlas](https://mongodb.com/atlas)
-- [MongoDB Documentation](https://docs.mongodb.com/)
+- [Overview](#overview)
+- [Live Demo](#live-demo)
+  - [Screenshots](#screenshots)
+- [Getting Started](#getting-started)
+  - [Development](#development)
+- [Brief](#brief)
+- [Features](#features) -[To Add](#to-add)
+- [Design](#design)
+  - [Technologies Used](#technologies-used)
+- [User Stories](#user-stories)
 
-## Deploy your own
+<!-- Overview -->
 
-Once you have access to the environment variables you'll need, deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+**Chitter:** A full-stack web app inspired by [Twitter.](https://www.twitter.com/) Within the app the user can sign up, add a profile photo as well as add photos to their posts. As well as update their profile with banner images and a bio. The application was built in React and Node JS, and was a help in understanding JWT's and the authentication process.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mongodb&project-name=with-mongodb&repository-name=with-mongodb&env=MONGODB_URI&envDescription=Required%20to%20connect%20the%20app%20with%20MongoDB)
+<!-- Live Demo -->
 
-## How to use
+## Live Demo
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+**[Check it out here.](http://chitter-next.vercel.com/)**
 
-```bash
-npx create-next-app --example with-mongodb with-mongodb-app
-# or
-yarn create next-app --example with-mongodb with-mongodb-app
+### Screenshots
+
+![Home](./public/screenshots/landing.png)
+
+## Getting started
+
+### Development
+
+To get started with the app, first clone the repo and `cd` into the directory:
+
+```
+$ git clone https://github.com/philsmithies/chitter-next.git
+$ cd chitter-next
 ```
 
-## Configuration
+Then install the dependencies for the backend:
 
-### Set up a MongoDB database
+Install dependencies:
 
-Set up a MongoDB database either locally or with [MongoDB Atlas for free](https://mongodb.com/atlas).
-
-### Set up environment variables
-
-Copy the `env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
-
-```bash
-cp .env.local.example .env.local
+```
+$ yarn
 ```
 
-Set each variable on `.env.local`:
+Run the application:
 
-- `MONGODB_URI` - Your MongoDB connection string. If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
-
-### Run Next.js in development mode
-
-```bash
-npm install
-npm run dev
-
-# or
-
-yarn install
-yarn dev
+```
+$ yarn dev
 ```
 
-Your app should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
+The server will automatically start in your browser or you can view it by visiting:
 
-You will either see a message stating "You are connected to MongoDB" or "You are NOT connected to MongoDB". Ensure that you have provided the correct `MONGODB_URI` environment variable.
+```
+$ http://localhost:3000/
+```
 
-When you are successfully connected, you can refer to the [MongoDB Node.js Driver docs](https://mongodb.github.io/node-mongodb-native/3.4/tutorials/collections/) for further instructions on how to query your database.
+## Design
 
-## Deploy on Vercel
+### Technologies Used
 
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+I used the following technologies to build Chitter.
 
-#### Deploy Your Local Project
+- [NextJs](https://www.nextjs.com)
+  - Development Javascript framework that enables building in React with integrated Node.JS functionality.
+- [React](https://reactjs.org)
+  - Used as the Javascript framework of choice for the project. Handles the views logic of the project.
+- [MongoDB](https://www.mongodb.com)
+  - The database technology used.
+- [NodeJS](https://nodejs.org/en/)
+  - The technology used to handle the backend including authentication and other database requests.
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+  - Used within the JSX components in React.
+- [CSS](https://developer.mozilla.org/en-US/docs/Archive/CSS3)
+  - Used for the overall look of the site and its elements.
+- [Flat Icon](http://flaticon.com/)
+  - Used for the icons and SVG files.
+- [Google fonts](https://fonts.google.com/)
+  - Fonts.
+- [Git](https://git-scm.com/)
+  - Used for version control.
+- [Vercel](https://www.vercel.com/)
+  - Used to host the web app.
 
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
+<!-- Brief -->
 
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
+## Brief
 
-#### Deploy from Our Template
+Build Twitter!
 
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
+Your challenge is to build Instagram using React and NodeJS. You'll need to have a log in, sign up and a feed element. Along with a profile page that the users can update with all their personal information. Style it like Twitter or use your personal creativity.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mongodb&project-name=with-mongodb&repository-name=with-mongodb&env=MONGODB_URI,MONGODB_DB&envDescription=Required%20to%20connect%20the%20app%20with%20MongoDB)
+<!-- Features -->
+
+## Features
+
+- Create an account
+- Sign in with created account
+- Post a tweet.
+- Add a photo to a tweet.
+- View own tweets on your profile.
+- View tweets of the chosen user's profile.
+- View other user profiles.
+- Remain logged in (remember token)
+- Log out
+
+### To Add
+
+- Like a user's tweet
+- Comment (@) on a user's tweet
+- More UI features including a tweet text box, character length limit, retweet function.
+
+### User Stories
+
+```
+As a User
+So that I can let people know what I am doing
+I want to post a message (peep) to chitter
+```
+
+```
+As a user
+So that I can see what others are saying
+I want to see all peeps in reverse chronological order
+```
+
+```
+As a User
+So that I can better appreciate the context of a peep
+I want to see the time at which it was made
+```
+
+```
+As a User
+So that I can post messages on Chitter as me
+I want to sign up for Chitter
+```
+
+```
+As a User
+So that only I can post messages on Chitter as me
+I want to log in to Chitter
+```
+
+```
+As a User
+So that I can avoid others posting messages on Chitter as me
+I want to log out of Chitter
+```
+
+<div align="center">
+
+---
+
+[Top](#table-of-contents)
+
+---
+
+</div>
