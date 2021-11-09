@@ -23,7 +23,7 @@
 
 ## Live Demo
 
-**[Check it out here.](http://chitter-next.vercel.com/)**
+**[Check it out here.](https://chitter-next.vercel.app/)**
 
 ### Screenshots
 
