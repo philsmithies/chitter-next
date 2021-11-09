@@ -1,3 +1,5 @@
 const dev = process.env.NODE_ENV !== "production";
 
-export const server = dev ? "http://localhost:3000" : "ticktock";
+export const server = dev
+  ? "http://localhost:3000"
+  : "https://chitter-next.vercel.app/";
