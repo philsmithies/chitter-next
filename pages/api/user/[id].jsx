@@ -6,9 +6,14 @@ const { ObjectId } = require("mongodb");
 dbConnect();
 
 export default async (req, res) => {
-  const reqUser = await User.findOne({ username: req.query.id });
-  let foundTweets = await Tweet.find({ user: reqUser._id })
-    .populate("user")
-    .sort({ createdAt: "desc" });
-  res.json({ user: reqUser, tweets: foundTweets });
+  try {
+    const reqUser = await User.findOne({ username: req.query.id });
+    let foundTweets = await Tweet.find({ user: reqUser._id })
+      .populate("user")
+      .sort({ createdAt: "desc" });
+    res.json({ user: reqUser, tweets: foundTweets, success: true });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ success: false });
+  }
 };

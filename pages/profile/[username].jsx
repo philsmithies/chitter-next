@@ -38,7 +38,7 @@ const Profile = ({ user, tweets }) => {
           height: "200px",
           position: "relative",
           overflow: "hidden",
-          zIndex: 300,
+          zIndex: 10,
         }}
         className="bg-red-400 h-screen"
       >
@@ -91,29 +91,38 @@ const Profile = ({ user, tweets }) => {
   );
 };
 
-export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/users/`);
+export async function getStaticProps(context) {
+  const username = context.params.username;
+  const res = await fetch(`${server}/api/user/` + username);
   const data = await res.json();
+  if (!data.success) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    };
+  } else {
+    return {
+      props: { user: data.user, tweets: data.tweets },
+    };
+  }
+}
+
+export async function getStaticPaths(user) {
+  const res = await fetch(`${server}/api/users/`);
+  const users = await res.json();
   // map data to an array of path objects with params (username)
-  const paths = data.result.map((user) => {
+  const paths = users.map((user) => {
     return {
       params: { username: user.username.toString() },
     };
   });
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
-};
-
-export const getStaticProps = async (context) => {
-  const username = context.params.username;
-  const res = await fetch(`${server}/api/user/` + username);
-  const data = await res.json();
-  return {
-    props: { user: data.user, tweets: data.tweets },
-  };
-};
+}
 
 Profile.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
