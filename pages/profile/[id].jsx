@@ -2,7 +2,6 @@ import Layout from "../../components/Layout";
 import axios from "axios";
 import { server } from "../../util/server";
 import Link from "next/link";
-// import { useRouter } from "next/router";
 import Feed from "../../components/Feed";
 import Tweet from "../../components/Tweet";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -10,6 +9,9 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Image } from "cloudinary-react";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/client";
+import { useClientRouter } from "use-client-router";
+import { useEffect, useState } from "react";
 
 const fetchData = async (id) =>
   await axios
@@ -23,10 +25,21 @@ const fetchData = async (id) =>
       data: null,
     }));
 
-const Profile = ({ data, error }) => {
+const Profile = ({ data, id, error }) => {
   const formatDate = (date) => {
     return format(new Date(date), "MMM yyyy");
   };
+
+  const [editingAbility, setEditingAbility] = useState(true);
+
+  const [session, loading] = useSession();
+
+  const router = useClientRouter();
+  const pid = router.query.id;
+
+  // if (session.user.username === pid) {
+  //   setEditingAbility(true);
+  // }
 
   return (
     <div className="border-l-2 border-r-2 h-full max-w-screen-sm m-auto flex flex-col">
@@ -81,6 +94,11 @@ const Profile = ({ data, error }) => {
       <button className="font-semibold border-2 bg-yellow-400 w-32 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white">
         Follow
       </button>
+      {editingAbility && (
+        <button className="font-semibold border-2 bg-yellow-400 w-32 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white">
+          Edit
+        </button>
+      )}
       <div className="border-b-2 pl-10 pb-6">
         <h3 className="font-bold text-xl mb-1">{data.user.fullName || ""}</h3>
         <h3 className="text-gray-600 mb-1">@{data.user.username}</h3>
