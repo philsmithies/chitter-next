@@ -4,17 +4,18 @@ import { server } from "../../util/server";
 
 const fetchData = async () =>
   await axios
-    .get(`http://localhost:3000/api/users`)
+    .get(`http://localhost:3000/api/user/phil123`)
     .then((res) => ({
       error: false,
-      users: res.data,
+      data: res.data,
     }))
     .catch(() => ({
       error: true,
-      users: null,
+      data: null,
     }));
 
-const Ssr = ({ users, error }) => {
+const Ssr = ({ data, error }) => {
+  console.log(data.user.fullName);
   return (
     <div>
       <ul>
@@ -22,13 +23,9 @@ const Ssr = ({ users, error }) => {
           <tbody>
             <h1>hi</h1>
             {/* <p>{user.username}</p> */}
-            {users.users.map((user, key) => (
-              <tr key={key}>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td>{user.name}</td>
-              </tr>
-            ))}
+            <h2>{data.user.username} is here</h2>
+            {/* <td>{user.email}</td>
+            <td>{user.name}</td> */}
           </tbody>
         </li>
       </ul>
