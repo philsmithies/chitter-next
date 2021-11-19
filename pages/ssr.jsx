@@ -1,32 +1,31 @@
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 import axios from "axios";
-import { server } from "../../util/server";
 
 const fetchData = async (id) =>
   await axios
-    .get(`http://localhost:3000/api/user/${id}`)
+    .get(`${server}/api/user/${id}`)
     .then((res) => ({
       error: false,
-      data: res.data,
+      users: res.data,
     }))
     .catch(() => ({
       error: true,
-      data: null,
+      users: null,
     }));
 
-const Ssr = ({ data, error }) => {
-  console.log(data.user.username);
+const Ssr = ({ user }) => {
   return (
     <div>
       <ul>
         <li>
           <tbody>
-            <h1>hi</h1>
-            {/* <p>{user.username}</p> */}
-            <h2>{data.user.username} is here</h2>
-            <h2>{data.user.email} is the email</h2>
-            {/* <td>{user.email}</td>
-            <td>{user.name}</td> */}
+            {/* {user.map((user, key) => (
+              <tr key={key}>
+                <td>{user.username}</td>
+                <td>{user.email}</td>
+                <td>{user.name}</td>
+              </tr>
+            ))} */}
           </tbody>
         </li>
       </ul>
@@ -34,7 +33,7 @@ const Ssr = ({ data, error }) => {
   );
 };
 
-// export const getServerSideProps = async ({ params, res }) => {
+// export const getServerSideProps = async () => {
 //   const data = await fetchData();
 //   return {
 //     props: data,
@@ -44,9 +43,9 @@ const Ssr = ({ data, error }) => {
 export const getServerSideProps = async ({ params, res }) => {
   try {
     const { id } = params;
-    const data = await fetchData(id);
+    const user = await fetchData(id);
     return {
-      props: data,
+      props: { user },
     };
   } catch {
     res.statusCode = 404;

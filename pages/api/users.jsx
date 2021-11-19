@@ -10,10 +10,13 @@ export default async (req, res) => {
     case "GET":
       try {
         const users = await User.find({});
-        res.status(200).json(users);
+        res.setHeader("Content-Type", "application/json");
+        res.statusCode = 200;
+        res.end(JSON.stringify({ success: true, users }));
+        // res.status(200).json(users);
       } catch (error) {
         console.log(error);
-        res.status(400).json({ success: false });
+        res.status(400).json({});
       }
       break;
     case "POST":

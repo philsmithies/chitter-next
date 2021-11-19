@@ -96,11 +96,11 @@ const Profile = ({ data, error }) => {
       {data.tweets.map((tweet) => (
         <Tweet
           key={tweet._id}
-          fullName={tweet.user ? tweet.fullName : ""}
-          publicId={tweet.user ? tweet.image : ""}
+          fullName={tweet.user ? tweet.user.fullName : ""}
+          publicId={tweet.user ? tweet.user.image : ""}
           imageUrl={tweet.imageUrl ? tweet.imageUrl : ""}
           text={tweet.text}
-          username={tweet.user ? tweet.username : ""}
+          username={tweet.user ? tweet.user.username : ""}
           createdAt={tweet.createdAt}
         />
       ))}
