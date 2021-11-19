@@ -10,7 +10,6 @@ import { Image } from "cloudinary-react";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
-import { useClientRouter } from "use-client-router";
 import { useEffect, useState } from "react";
 
 const fetchData = async (id) =>
@@ -34,7 +33,7 @@ const Profile = ({ data, id, error }) => {
 
   const [session, loading] = useSession();
 
-  const router = useClientRouter();
+  const router = useRouter();
   const pid = router.query.id;
 
   // if (session.user.username === pid) {
@@ -94,11 +93,6 @@ const Profile = ({ data, id, error }) => {
       <button className="font-semibold border-2 bg-yellow-400 w-32 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white">
         Follow
       </button>
-      {editingAbility && (
-        <button className="font-semibold border-2 bg-yellow-400 w-32 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white">
-          Edit
-        </button>
-      )}
       <div className="border-b-2 pl-10 pb-6">
         <h3 className="font-bold text-xl mb-1">{data.user.fullName || ""}</h3>
         <h3 className="text-gray-600 mb-1">@{data.user.username}</h3>
@@ -109,6 +103,11 @@ const Profile = ({ data, id, error }) => {
             ? formatDate(data.user.createdAt)
             : "November 2021"}{" "}
         </p>
+        {editingAbility && (
+          <button className="font-semibold border-2 bg-yellow-400 w-24 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white">
+            Edit
+          </button>
+        )}
       </div>
 
       {data.tweets.map((tweet) => (
