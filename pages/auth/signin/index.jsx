@@ -6,8 +6,8 @@ import styles from "../auth.module.css";
 export default function SignIn({ csrfToken }) {
   const router = useRouter();
 
-  const signIn = () => {
-    router.push(`/`);
+  const signUp = () => {
+    router.push(`/auth/signup`);
   };
 
   return (
@@ -42,7 +42,7 @@ export default function SignIn({ csrfToken }) {
         </form>
         <h1 className="text-s mt-2 mb-2 mx-auto">
           Don't have an account?{" "}
-          <button onClick={signIn} className={styles.signInSecondary}>
+          <button onClick={signUp} className={styles.signInSecondary}>
             Sign Up
           </button>
         </h1>
