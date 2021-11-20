@@ -25,13 +25,13 @@ export default async (req, res) => {
         await User.findOneAndUpdate(
           { username: req.query.id },
           {
-            username: req.body.username,
+            bio: req.body.bio,
             fullName: req.body.fullName,
             image: req.body.image,
             bioPhotoId: req.body.bioPhotoId,
           }
         );
-        res.send("User Updated!");
+        res.status(201).json({ success: true });
       } catch (error) {
         return res.status(400).json({ message: "failed" });
       }
