@@ -36,6 +36,14 @@ export default async (req, res) => {
         return res.status(400).json({ message: "failed" });
       }
       break;
+    case "DELETE":
+      try {
+        await User.findOneAndDelete({ username: req.query.id });
+        res.status(201).json({ success: true });
+      } catch (error) {
+        return res.status(400).json({ message: "failed" });
+      }
+      break;
     default:
       res.status(400).json({ success: false });
       break;

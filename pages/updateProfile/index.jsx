@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/client";
+import { useSession, signOut } from "next-auth/client";
 import { useRef, useState } from "react";
 import PuffLoader from "react-spinners/PuffLoader";
 import Axios from "axios";
@@ -24,6 +24,33 @@ const UpdateProfile = () => {
 
   const finishEdit = () => {
     router.push(`/profile/${session.user.username}`);
+  };
+
+  const onFormDelete = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      await Axios.delete(
+        `/api/user/${session.user.username}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      ).then((response) => {
+        setLoading(false);
+        if (response.data.success) {
+          router.push(`/`);
+          signOut();
+        }
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const onFormSubmit = async (e) => {
@@ -117,6 +144,20 @@ const UpdateProfile = () => {
           </form>
         </div>
       )}
+      <div className="flex flex-col items-center justify-center mt-10">
+        <form className={`flex flex-col pt-3 rounded`} onSubmit={onFormDelete}>
+          <label for="deleteAccount">Delete Account: </label>
+          <input
+            className="border-2 rounded-md p-1 mb-5 mt-2 w-80"
+            name="deleteAccount"
+            type="text"
+            placeholder={`Enter your username to confirm deletion`}
+          />
+          <button className="border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-48 mx-auto hover:bg-yellow-500 hover:text-white">
+            Delete
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
