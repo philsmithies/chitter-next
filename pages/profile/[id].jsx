@@ -25,20 +25,20 @@ const fetchData = async (id) =>
     }));
 
 const Profile = ({ data, id, error }) => {
+  const [editingAbility, setEditingAbility] = useState(false);
+  const [session, loading] = useSession();
+  const router = useRouter();
+  const pid = router.query.id;
+
   const formatDate = (date) => {
     return format(new Date(date), "MMM yyyy");
   };
 
-  const [editingAbility, setEditingAbility] = useState(true);
-
-  const [session, loading] = useSession();
-
-  const router = useRouter();
-  const pid = router.query.id;
-
-  // if (session.user.username === pid) {
-  //   setEditingAbility(true);
-  // }
+  useEffect(() => {
+    if (session) {
+      session.user.username === pid ? setEditingAbility(true) : "";
+    }
+  }, [session]);
 
   const editPage = () => {
     router.push(`/updateprofile`);
