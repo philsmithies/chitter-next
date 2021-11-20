@@ -10,6 +10,10 @@ export default function SignIn({ csrfToken }) {
     router.push(`/auth/signup`);
   };
 
+  const signIn = () => {
+    router.push(`/`);
+  };
+
   return (
     <div className={`h-screen flex items-center justify-center m-auto`}>
       <div className="flex flex-col items-center">
@@ -36,7 +40,7 @@ export default function SignIn({ csrfToken }) {
             type="password"
             className={styles.inputField}
           />
-          <button type="submit" className={styles.signUpBtn}>
+          <button onClick={signIn} type="submit" className={styles.signUpBtn}>
             Sign In
           </button>
         </form>

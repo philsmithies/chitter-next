@@ -62,58 +62,58 @@ const SignUp = () => {
 
   return (
     <div className={`h-screen flex items-center justify-center`}>
-      {loading && (
-        <div className="flex flex-col">
-          <img src="/images/bird.png" className="m-auto w-12 mb-4" />
-          <PuffLoader color={"#36D7B7"} size={100} />
-        </div>
-      )}
-      {!loading && (
-        <div className="flex flex-col items-center">
-          <img src="/images/bird.png" className="m-auto w-12 mb-2" />
-          <h1 className="font-semibold text-2xl mb-2 m-auto">
-            Join Chitter Today.
-          </h1>
-          <form
-            className={`flex flex-col pt-3 rounded ${loading ? "hidden" : ""}`}
-            onSubmit={onFormSubmit}
-          >
-            <input
-              className={styles.inputField}
-              ref={usernameRef}
-              placeholder="Username"
-            />
-            <br />
-            <input
-              className={styles.inputField}
-              ref={fullNameRef}
-              placeholder="Full Name"
-            />
-            <br />
-            <input
-              className={styles.inputField}
-              ref={passwordRef}
-              placeholder="Password"
-            />
-            <br />
-            <input
-              className={styles.inputField}
-              accept="image/*"
-              multiple
-              type="file"
-              onChange={onChange}
-              required
-            />
-            <button className={styles.signUpBtn}>Submit</button>
-          </form>
+      <div className="flex flex-col items-center">
+        <img src="/images/bird.png" className="m-auto w-12 mb-2" />
+        <h1 className="font-semibold text-2xl mb-2 m-auto">
+          {!loading ? "Join Chitter Today." : "Loading"}
+        </h1>
+        {loading && (
+          <div className="flex flex-col">
+            <PuffLoader color={"#36D7B7"} size={100} />
+          </div>
+        )}
+        <form
+          className={`flex flex-col pt-3 rounded ${loading ? "hidden" : ""}`}
+          onSubmit={onFormSubmit}
+        >
+          <input
+            className={styles.inputField}
+            ref={usernameRef}
+            placeholder="Username"
+          />
+          <br />
+          <input
+            className={styles.inputField}
+            ref={fullNameRef}
+            placeholder="Full Name"
+          />
+          <br />
+          <input
+            type="password"
+            className={styles.inputField}
+            ref={passwordRef}
+            placeholder="Password"
+          />
+          <br />
+          <input
+            className={styles.inputField}
+            accept="image/*"
+            multiple
+            type="file"
+            onChange={onChange}
+            required
+          />
+          <button className={styles.signUpBtn}>Submit</button>
+        </form>
+        {!loading && (
           <h1 className="text-s mt-2 mb-2 mx-auto">
             Already have an account?{" "}
             <button onClick={signIn} className={styles.signInSecondary}>
               Sign In
             </button>
           </h1>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

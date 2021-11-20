@@ -11,12 +11,14 @@ const UpdateProfile = () => {
   const [session, sessionLoading] = useSession();
   const usernameRef = useRef(null);
   const fullNameRef = useRef(null);
+  const deleteRef = useRef(null);
   const bioRef = useRef(null);
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const [bioPhotoId, setBioPhotoId] = useState("");
   const router = useRouter();
+  const [error, setError] = useState("");
 
   const onChange = async (e) => {
     setFile(e.target.files[0]);
@@ -28,28 +30,32 @@ const UpdateProfile = () => {
 
   const onFormDelete = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
-    try {
-      await Axios.delete(
-        `/api/user/${session.user.username}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
+    if (deleteRef.current.value === session.user.username) {
+      setLoading(true);
+      try {
+        await Axios.delete(
+          `/api/user/${session.user.username}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
           },
-        },
-        {
-          withCredentials: true,
-        }
-      ).then((response) => {
-        setLoading(false);
-        if (response.data.success) {
-          router.push(`/`);
-          signOut();
-        }
-      });
-    } catch (err) {
-      console.error(err);
+          {
+            withCredentials: true,
+          }
+        ).then((response) => {
+          setLoading(false);
+          if (response.data.success) {
+            signOut();
+            router.push(`/`);
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      setError("Enter your username to delete your account");
     }
   };
 
@@ -147,10 +153,12 @@ const UpdateProfile = () => {
       <div className="flex flex-col items-center justify-center mt-10">
         <form className={`flex flex-col pt-3 rounded`} onSubmit={onFormDelete}>
           <label for="deleteAccount">Delete Account: </label>
+          {error}
           <input
             className="border-2 rounded-md p-1 mb-5 mt-2 w-80"
             name="deleteAccount"
             type="text"
+            ref={deleteRef}
             placeholder={`Enter your username to confirm deletion`}
           />
           <button className="border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-48 mx-auto hover:bg-yellow-500 hover:text-white">
