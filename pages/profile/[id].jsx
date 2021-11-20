@@ -40,6 +40,10 @@ const Profile = ({ data, id, error }) => {
   //   setEditingAbility(true);
   // }
 
+  const editPage = () => {
+    router.push(`/updateprofile`);
+  };
+
   return (
     <div className="border-l-2 border-r-2 h-full max-w-screen-sm m-auto flex flex-col">
       <div className="w-full flex h-20 items-center border-b-2">
@@ -66,7 +70,7 @@ const Profile = ({ data, id, error }) => {
           overflow: "hidden",
           zIndex: 10,
         }}
-        className="bg-red-400 h-screen"
+        className="h-screen"
       >
         <img
           src="/images/banner.jpeg"
@@ -104,7 +108,12 @@ const Profile = ({ data, id, error }) => {
             : "November 2021"}{" "}
         </p>
         {editingAbility && (
-          <button className="font-semibold border-2 bg-yellow-400 w-24 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white">
+          <button
+            onClick={() => {
+              editPage();
+            }}
+            className="font-semibold border-2 bg-yellow-400 w-24 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white"
+          >
             Edit
           </button>
         )}

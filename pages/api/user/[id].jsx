@@ -28,6 +28,7 @@ export default async (req, res) => {
             username: req.body.username,
             fullName: req.body.fullName,
             image: req.body.image,
+            bioPhotoId: req.body.bioPhotoId,
           }
         );
         res.send("User Updated!");
