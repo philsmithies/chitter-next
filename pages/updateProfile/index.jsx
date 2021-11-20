@@ -67,7 +67,7 @@ const UpdateProfile = () => {
     formData.append("file", file);
     formData.append("upload_preset", preset);
     const imageRes = await Axios.post(url, formData);
-    setBioPhotoId(imageRes.data.secure_url);
+    const bioPhoto = imageRes.data.secure_url;
 
     const bio = bioRef ? bioRef.current.value : session.user.bio;
 
@@ -81,7 +81,7 @@ const UpdateProfile = () => {
         {
           bio,
           fullName,
-          bioPhotoId,
+          bioPhotoId: bioPhoto,
         },
         {
           headers: {
@@ -142,7 +142,6 @@ const UpdateProfile = () => {
               multiple
               type="file"
               onChange={onChange}
-              required
             />
             <button className="border-2 mt-3 mb-3 bg-yellow-400 p-2 rounded-full w-48 mx-auto hover:bg-yellow-500 hover:text-white">
               Submit

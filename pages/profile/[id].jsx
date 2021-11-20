@@ -72,19 +72,23 @@ const Profile = ({ data, id, error }) => {
         }}
         className="h-screen"
       >
-        <img
-          src="/images/banner.jpeg"
-          layout="fill"
-          alt="Banner Image"
-          objectFit="cover"
-        />
+        {!data.user.bioPhotoId ? (
+          <img
+            src="/images/banner.jpeg"
+            layout="fill"
+            alt="Banner Image"
+            objectFit="cover"
+          />
+        ) : (
+          <Image cloudName="chitter" publicId={data.user.bioPhotoId} />
+        )}
       </div>
       <div className="relative z-10">
-        {data.user.publicId ? (
+        {data.user.image !== "no image" ? (
           <Image
-            className="profile_hero"
+            className="rounded-full w-20 ml-10 m-minus"
             cloudName="chitter"
-            publicId={data.user.publicId}
+            publicId={data.user.image}
           />
         ) : (
           <img
