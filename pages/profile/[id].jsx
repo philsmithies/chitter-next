@@ -2,7 +2,6 @@ import Layout from "../../components/Layout";
 import axios from "axios";
 import { server } from "../../util/server";
 import Link from "next/link";
-// import { useRouter } from "next/router";
 import Feed from "../../components/Feed";
 import Tweet from "../../components/Tweet";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -10,6 +9,8 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Image } from "cloudinary-react";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/client";
+import { useEffect, useState } from "react";
 
 const fetchData = async (id) =>
   await axios
@@ -23,9 +24,24 @@ const fetchData = async (id) =>
       data: null,
     }));
 
-const Profile = ({ data, error }) => {
+const Profile = ({ data, id, error }) => {
+  const [editingAbility, setEditingAbility] = useState(false);
+  const [session, loading] = useSession();
+  const router = useRouter();
+  const pid = router.query.id;
+
   const formatDate = (date) => {
     return format(new Date(date), "MMM yyyy");
+  };
+
+  useEffect(() => {
+    if (session) {
+      session.user.username === pid ? setEditingAbility(true) : "";
+    }
+  }, [session]);
+
+  const editPage = () => {
+    router.push(`/updateprofile`);
   };
 
   return (
@@ -54,21 +70,25 @@ const Profile = ({ data, error }) => {
           overflow: "hidden",
           zIndex: 10,
         }}
-        className="bg-red-400 h-screen"
+        className="h-screen"
       >
-        <img
-          src="/images/banner.jpeg"
-          layout="fill"
-          alt="Banner Image"
-          objectFit="cover"
-        />
+        {!data.user.bioPhotoId ? (
+          <img
+            src="/images/banner.jpeg"
+            layout="fill"
+            alt="Banner Image"
+            objectFit="cover"
+          />
+        ) : (
+          <Image cloudName="chitter" publicId={data.user.bioPhotoId} />
+        )}
       </div>
       <div className="relative z-10">
-        {data.user.publicId ? (
+        {data.user.image !== "no image" ? (
           <Image
-            className="profile_hero"
+            className="rounded-full w-20 ml-10 m-minus"
             cloudName="chitter"
-            publicId={data.user.publicId}
+            publicId={data.user.image}
           />
         ) : (
           <img
@@ -91,6 +111,16 @@ const Profile = ({ data, error }) => {
             ? formatDate(data.user.createdAt)
             : "November 2021"}{" "}
         </p>
+        {editingAbility && (
+          <button
+            onClick={() => {
+              editPage();
+            }}
+            className="font-semibold border-2 bg-yellow-400 w-24 self-end mr-5 mt-2 p-2 rounded-full hover:bg-yellow-500 hover:text-white"
+          >
+            Edit
+          </button>
+        )}
       </div>
 
       {data.tweets.map((tweet) => (

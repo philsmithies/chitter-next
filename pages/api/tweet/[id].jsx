@@ -6,8 +6,13 @@ import Tweet from "../../../models/tweet";
 dbConnect();
 
 export default async (req, res) => {
-  const tweet = await Tweet.find({ _id: ObjectId(req.query.id) }).populate(
-    "user"
-  );
-  res.json(tweet);
+  try {
+    const tweet = await Tweet.findOne({ _id: ObjectId(req.query.id) }).populate(
+      "user"
+    );
+    res.json({ tweet, success: true });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ success: false });
+  }
 };

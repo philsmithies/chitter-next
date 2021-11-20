@@ -59,7 +59,7 @@ const SignUpBar = () => {
             className="text-yellow-500 font-bold hover:text-yellow-900"
             href="https://www.github.com/philsmithies"
           >
-            {" "}
+            <br />
             Phil Smithies
           </a>
         </p>

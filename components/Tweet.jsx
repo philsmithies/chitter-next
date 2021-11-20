@@ -32,10 +32,8 @@ export default function Tweet(props) {
         <div className="flex flex-col w-full">
           <a href={`/profile/${props.username}`}>
             <div className="flex ml-2 pb-1">
-              <p className="font-bold">{props.fullName || "Jimmy"}</p>
-              <p className="ml-1 text-gray-600">
-                @{props.username || "Full Name is missing"}
-              </p>
+              <p className="font-bold">{props.fullName || ""}</p>
+              <p className="ml-1 text-gray-600">@{props.username || ""}</p>
               <p className="font-bol ml-1 text-gray-600">
                 {formatDate(props.createdAt)}
               </p>
@@ -56,15 +54,17 @@ export default function Tweet(props) {
             )}
           </div>
           <div className="flex justify-between pb-4 pt-2 pl-2 pr-2">
-            <ChatBubbleOutlineIcon className="w-5" />
-            <RetweetIcon className="w-5" />
+            <ChatBubbleOutlineIcon className="w-5 fill-current hover:text-yellow-500 cursor-pointer" />
+            <RetweetIcon className="w-5 fill-current hover:text-green-400 cursor-pointer" />
             <LikeIcon
-              className="w-5"
+              className="w-5 fill-current hover:text-red-400 cursor-pointer"
               // onClick={() => {
               //   likeTweet();
               // }}
             />
-            <LinkIcon className="w-5 mr-2" />
+            <a href="http://www.github.com/philsmithies">
+              <LinkIcon className="w-5 mr-2 fill-current hover:text-yellow-500 cursor-pointer" />
+            </a>
           </div>
         </div>
       </div>
